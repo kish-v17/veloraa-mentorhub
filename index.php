@@ -22,7 +22,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <style>
+     <style> 
     	@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
     	.fredoka-font {font-family: 'Fredoka One', cursive;}
     	body{font-family: 'Montserrat', sans-serif; color: #111;font-size: 14px;font-weight: 400;}
@@ -141,7 +141,7 @@
 			.h100 {height: auto; padding-top: 100px; padding-bottom: 100px; }
 			.banner-content {position: relative; top:0;     -webkit-transform: translateY(0%);-moz-transform: translateY(0%);-ms-transform: translateY(0%);-o-transform: translateY(0%);transform: translateY(0%);}
 		}
-    </style>
+     </style>
 
 </head>
 
@@ -165,7 +165,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div>  
 
 		<div class="banner-wrapper h100 bscover" style="background-image: url(demo/banner-bg-1.png);">
 			<div class="banner-content">
@@ -698,4 +698,4 @@
 
 </body>
 
-</html>
+</html> 
