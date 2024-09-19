@@ -1,6 +1,64 @@
-
 <?php
-    include 'header.php';
+    include 'header.php'; // Make sure header.php includes the session start and database connection
+session_start();
+require 'database/db.php'; // Ensure you have database connection setup here
+
+// Check if the form is submitted
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Retrieve form data
+    $fullname = $_POST['fullname'];
+    $email = $_POST['email']; // Assuming email is used as a unique identifier and not updated
+    $phone = $_POST['phone'];
+    $city = $_POST['city'];
+    $state = $_POST['state'];
+    $country = $_POST['country'];
+    $about = $_POST['about'];
+    $githubId = $_POST['githubId'];
+    $linkedinId = $_POST['linkedinId'];
+    $skills = isset($_POST['skill']) ? implode(', ', $_POST['skill']) : ''; // Handle multiple skills
+    $profilePhoto = $_FILES['file']['name']; // Handle file upload
+
+    // Get the user ID from the session or pass it via a hidden field
+    $userId = $_SESSION['user_id']; // Ensure this session variable is set when the user logs in
+
+    // File upload path
+    $targetDir = "uploads/";
+    $targetFile = $targetDir . basename($_FILES["file"]["name"]);
+
+    // Move the uploaded file to the target directory
+    if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFile)) {
+        // Prepare and execute the update query
+        $stmt = $pdo->prepare("
+            UPDATE user_tbl
+            SET U_Fnm = :fullname, U_Phn = :phone, U_City = :city, U_State = :state, U_Country = :country,
+                U_About = :about, U_GitHub = :githubId, U_LinkedIn = :linkedinId, U_Skill = :skills,
+                U_Profile = :profilePhoto
+            WHERE id = :userId
+        ");
+        
+        // Bind parameters
+        $stmt->bindParam(':fullname', $fullname);
+        $stmt->bindParam(':phone', $phone);
+        $stmt->bindParam(':city', $city);
+        $stmt->bindParam(':state', $state);
+        $stmt->bindParam(':country', $country);
+        $stmt->bindParam(':about', $about);
+        $stmt->bindParam(':githubId', $githubId);
+        $stmt->bindParam(':linkedinId', $linkedinId);
+        $stmt->bindParam(':skills', $skills);
+        $stmt->bindParam(':profilePhoto', $profilePhoto);
+        $stmt->bindParam(':userId', $userId);
+
+        // Execute the statement
+        if ($stmt->execute()) {
+            echo "<div class='alert alert-success'>Profile updated successfully.</div>";
+        } else {
+            echo "<div class='alert alert-danger'>Error updating profile.</div>";
+        }
+    } else {
+        echo "<div class='alert alert-danger'>Error uploading file.</div>";
+    }
+}
 ?>
         <!-- main content -->
         <div class="main-content bg-lightblue theme-dark-bg right-chat-active">
@@ -27,15 +85,15 @@
                                 <div class="row">
                                     <div class="col-lg-6 mb-3">
                                         <div class="form-group">
-                                            <label class="mont-font fw-600 font-xsss">Full Name</label>
-                                            <input type="text" class="form-control">
+                                            <label class="mont-font fw-600 font-xsss" >Full Name</label>
+                                            <input type="text" class="form-control" name="fullname">
                                         </div>        
                                     </div>
 
                                     <div class="col-lg-6 mb-3">
                                         <div class="form-group">
                                             <label class="mont-font fw-600 font-xsss">Email</label>
-                                            <input type="text" class="form-control"  value="hello@gmail.com" readonly>
+                                            <input type="text" class="form-control" name="email" value="hello@gmail.com" readonly>
                                         </div>        
                                     </div>
                                 </div>
@@ -44,14 +102,14 @@
                                     <div class="col-lg-6 mb-3">
                                         <div class="form-group">
                                             <label class="mont-font fw-600 font-xsss">Phone</label>
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" name="phone">
                                         </div>        
                                     </div>
 
                                     <div class="col-lg-6 mb-3">
                                         <div class="form-group">
                                             <label class="mont-font fw-600 font-xsss">City</label>
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" name="city">
                                         </div>        
                                     </div>
                                 </div>
@@ -60,13 +118,13 @@
                                     <div class="col-lg-6 mb-3">
                                         <div class="form-group">
                                             <label class="mont-font fw-600 font-xsss">State</label>
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" name="state">
                                         </div>        
                                     </div>
                                     <div class="col-lg-6 mb-3">
                                         <div class="form-group">
                                             <label class="mont-font fw-600 font-xsss">Country</label>
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" name="country">
                                         </div>        
                                     </div>
                                 </div>
@@ -74,7 +132,7 @@
                                 <div class="row">
                                     <div class="col-lg-12 mb-3">
                                         <label class="mont-font fw-600 font-xsss">About</label>
-                                        <textarea class="form-control mb-0 p-3 h100 lh-16" rows="5" placeholder="Write your message..." spellcheck="false"></textarea>
+                                        <textarea class="form-control mb-0 p-3 h100 lh-16" rows="5" name="about" placeholder="Write your message..." spellcheck="false"></textarea>
                                     </div>
                                 </div>
 
@@ -82,13 +140,13 @@
                                     <div class="col-lg-6 mb-3">
                                         <div class="form-group">
                                             <label class="mont-font fw-600 font-xsss">Github Id</label>
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" name="githubId">
                                         </div>        
                                     </div>
                                     <div class="col-lg-6 mb-3">
                                         <div class="form-group">
                                             <label class="mont-font fw-600 font-xsss">Linked Id</label>
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" name="linkedinId">
                                         </div>        
                                     </div>
                                 </div>
@@ -97,38 +155,35 @@
                                     <div class="col-lg-6 mb-3">
                                         <div class="form-group">
                                             <label class="mont-font fw-600 font-xsss">Skills</label>
-                                            <select class="form-control">
+                                            <select class="form-control" name="skill[]" multiple>
                                                 <option value="">--Select Skills--</option>
-                                                <option value="c">c</option>
-                                                <option value="cpp">c++</option>
+                                                <option value="c">C</option>
+                                                <option value="cpp">C++</option>
                                                 <option value="java">Java</option>
                                                 <option value="asp.net">ASP.net</option>
                                                 <option value="php">PHP</option>
                                             </select>
-                                        </div>        
+                                        </div>
                                     </div>
                                 </div>
+
 
                                     <div class="col-lg-12 mb-3">
                                         <div class="card mt-3 border-0">
                                             <div class="card-body d-flex justify-content-between align-items-end p-0">
                                                 <div class="form-group mb-0 w-100">
                                                     <input type="file" name="file" id="file" class="input-file">
-                                                    <label for="file" class="rounded-3 text-center bg-white btn-tertiary js-labelFile p-4 w-100 border-dashed">
+                                                    <label for="file" name="profile" class="rounded-3 text-center bg-white btn-tertiary js-labelFile p-4 w-100 border-dashed">
                                                     <i class="ti-cloud-down large-icon me-3 d-block"></i>
-                                                    <span class="js-fileName">Drag and drop or click to replace</span>
+                                                    <span class="js-fileName">Drag and drop or click to select profile photo</span>
                                                     </label>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
-
                                     <div class="col-lg-12">
-                                        <a href="#" class="bg-current text-center text-white font-xsss fw-600 p-3 w175 rounded-3 d-inline-block">Update</a>
+                                        <button type="submit" class="bg-current text-center text-white font-xsss fw-600 p-3 w175 rounded-3 d-inline-block">Update</button>
                                     </div>
-                                </div>
-
                             </form>
                             </div>
                         </div>
