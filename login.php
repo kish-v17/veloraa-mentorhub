@@ -1,3 +1,41 @@
+<?php
+session_start();
+require 'database/db.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    // Check if the user exists
+    $stmt = $dbh->prepare("SELECT * FROM user_tbl WHERE U_Email = :email");
+    $stmt->bindParam(':email', $email);
+    $stmt->execute();
+    
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($user && password_verify($password, $user['U_Pwd'])) {
+        $_SESSION['user_id'] = $user['U_Id'];
+        $_SESSION['user_name'] = $user['U_Fnm'];
+        $_SESSION['user_role'] = $user['U_Role']; // Store user role in session
+
+        // Role-based redirection
+        switch ($user['U_Role']) {
+            case 1:
+                header("Location: admin/index.php");
+                break;
+            case 2:
+                header("Location: mentor/index.php");
+                break;
+            case 3:
+                header("Location: mentee/index.php");
+                break;
+        }
+        exit;
+    } else {
+        echo "<script>alert('Invalid email or password');</script>";
+    }
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -46,14 +84,14 @@
                 <div class="card shadow-none border-0 ms-auto me-auto login-card">
                     <div class="card-body rounded-0 text-left">
                         <h2 class="fw-700 display1-size display2-md-size mb-3">Login into <br>your account</h2>
-                        <form>
+                        <form method="post">
                             
                             <div class="form-group icon-input mb-3">
                                 <i class="font-sm ti-email text-grey-500 pe-0"></i>
-                                <input type="text" class="style2-input ps-5 form-control text-grey-900 font-xsss fw-600" placeholder="Your Email Address">                        
+                                <input name="email" type="text" class="style2-input ps-5 form-control text-grey-900 font-xsss fw-600" placeholder="Your Email Address">                        
                             </div>
                             <div class="form-group icon-input mb-1">
-                                <input type="Password" class="style2-input ps-5 form-control text-grey-900 font-xss ls-3" placeholder="Password">
+                                <input name="password" type="Password" class="style2-input ps-5 form-control text-grey-900 font-xss ls-3" placeholder="Password">
                                 <i class="font-sm ti-lock text-grey-500 pe-0"></i>
                             </div>
                             <div class="form-check text-left mb-3">
@@ -61,12 +99,13 @@
                                 <label class="form-check-label font-xsss text-grey-500" for="exampleCheck5">Remember me</label>
                                 <a href="forgot.php" class="fw-600 font-xsss text-grey-700 mt-1 float-right">Forgot your Password?</a>
                             </div>
-                        </form>
+                       
                          
                         <div class="col-sm-12 p-0 text-left">
-                            <div class="form-group mb-1"><a href="#" class="form-control text-center style2-input text-white fw-600 bg-dark border-0 p-0 ">Login</a></div>
+                            <div class="form-group mb-1"><input type="submit" class="form-control text-center style2-input text-white fw-600 bg-dark border-0 p-0 " value="Login"></div>
                             <h6 class="text-grey-500 font-xsss fw-500 mt-0 mb-0 lh-32">Dont have account <a href="register.php" class="fw-700 ms-1">Register</a></h6>
                         </div>
+                        </form>
                         <div class="col-sm-12 p-0 text-center mt-2">
                             
                             <h6 class="mb-0 d-inline-block bg-white fw-500 font-xsss text-grey-500 mb-3">Or, Sign in with your social account </h6>
@@ -88,14 +127,14 @@
                     <div class="card shadow-none rounded-0 w-100 p-2 pt-3 border-0">
                         <div class="card-body rounded-0 text-left p-3">
                             <h2 class="fw-700 display1-size display2-md-size mb-4">Login into <br>your account</h2>
-                            <form>
+                            <form method="post">
                                 
                                 <div class="form-group icon-input mb-3">
                                     <i class="font-sm ti-email text-grey-500 pe-0"></i>
-                                    <input type="text" class="style2-input ps-5 form-control text-grey-900 font-xsss fw-600" placeholder="Your Email Address">                        
+                                    <input name="email" type="text" class="style2-input ps-5 form-control text-grey-900 font-xsss fw-600" placeholder="Your Email Address">                        
                                 </div>
                                 <div class="form-group icon-input mb-1">
-                                    <input type="Password" class="style2-input ps-5 form-control text-grey-900 font-xss ls-3" placeholder="Password">
+                                    <input name="password" type="Password" class="style2-input ps-5 form-control text-grey-900 font-xss ls-3" placeholder="Password">
                                     <i class="font-sm ti-lock text-grey-500 pe-0"></i>
                                 </div>
                                 <div class="form-check text-left mb-3">
@@ -106,7 +145,7 @@
                             </form>
                              
                             <div class="col-sm-12 p-0 text-left">
-                                <div class="form-group mb-1"><a href="#" class="form-control text-center style2-input text-white fw-600 bg-dark border-0 p-0 ">Login</a></div>
+                                <div class="form-group mb-1"><a class="form-control text-center style2-input text-white fw-600 bg-dark border-0 p-0 " type="submit">Login</a></div>
                                 <h6 class="text-grey-500 font-xsss fw-500 mt-0 mb-0 lh-32">Dont have account <a href="register.php" class="fw-700 ms-1">Register</a></h6>
                             </div>
                             <div class="col-sm-12 p-0 text-center mt-3 ">
