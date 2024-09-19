@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($user && password_verify($password, $user['U_Pwd'])) {
+        if (    $user && password_verify($password, $user['U_Pwd'])) {
             $_SESSION['user_id'] = $user['U_Id'];
             $_SESSION['user_name'] = $user['U_Fnm'];
             $_SESSION['user_role'] = $user['U_Role']; // Store user role in session
