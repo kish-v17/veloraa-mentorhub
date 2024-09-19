@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $hashed_password = password_hash($password, PASSWORD_BCRYPT);
 
     // Default role to 3 (assuming this represents "mentee")
-    $role = 3;
+    $role = $_POST["role"];
 
     // Check if the email is already registered
     $stmt = $dbh->prepare("SELECT * FROM user_tbl WHERE U_Email = :email");
@@ -93,39 +93,51 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="col-xl-7 vh-100 align-items-center d-flex bg-white rounded-3 overflow-hidden">
                 <div class="card shadow-none border-0 ms-auto me-auto login-card">
                     <div class="card-body rounded-0 text-left">
-                        <h2 class="fw-700 display1-size display2-md-size mb-4">Create <br>your account</h2>                        
-                            <form method="post" action="register.php">
-                                <div class="form-group icon-input mb-3">
-                                    <i class="font-sm ti-user text-grey-500 pe-0"></i>
-                                    <input type="text" name="name" class="style2-input ps-5 form-control text-grey-900 font-xsss fw-600" placeholder="Your Name" required>
+                        <!-- Existing form heading -->
+                        <h3 class="fw-700 display1-size display2-md-size mb-4">Create <br>your account</h3>                        
+                        <form method="post" action="register.php">
+                            <div class="form-group mb-3 text-center">
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <label for="mentor" class="me-3 fs-2">
+                                        <input type="radio" class="fs-6 me-2" name="role" value="2" id="mentor"> Mentor
+                                    </label>
+                                    <label for="mentee" class="ms-3 fs-2">
+                                        <input type="radio" class="fs-6 me-2" name="role" value="3" id="mentee"> Mentee
+                                    </label>
                                 </div>
-                                <div class="form-group icon-input mb-3">
-                                    <i class="font-sm ti-email text-grey-500 pe-0"></i>
-                                    <input type="email" name="email" class="style2-input ps-5 form-control text-grey-900 font-xsss fw-600" placeholder="Your Email Address" required>
-                                </div>
-                                <div class="form-group icon-input mb-3">
-                                    <input type="password" name="password" class="style2-input ps-5 form-control text-grey-900 font-xss ls-3" placeholder="Password" required>
-                                    <i class="font-sm ti-lock text-grey-500 pe-0"></i>
-                                </div>
-                                <div class="form-group icon-input mb-1">
-                                    <input type="password" name="confirm_password" class="style2-input ps-5 form-control text-grey-900 font-xss ls-3" placeholder="Confirm Password" required>
-                                    <i class="font-sm ti-lock text-grey-500 pe-0"></i>
-                                </div>
-                                <div class="form-check text-left mb-3">
-                                    <input type="checkbox" name="terms" class="form-check-input mt-2" id="exampleCheck2" required>
-                                    <label class="form-check-label font-xsss text-grey-500" for="exampleCheck2">Accept Terms and Conditions</label>
-                                </div>
-                           
-                        <div class="col-sm-12 p-0 text-left">
-                            <div class="form-group mb-1"><input type="submit" class="form-control text-center style2-input text-white fw-600 bg-dark border-0 p-0 " value="Register"></div>
-                            <h6 class="text-grey-500 font-xsss fw-500 mt-0 mb-0 lh-32">Already have account <a href="login.php" class="fw-700 ms-1">Login</a></h6>
-                        </div>
+                            </div>
+                            <div class="form-group icon-input mb-3">
+                                <i class="font-sm ti-user text-grey-500 pe-0"></i>
+                                <input type="text" name="name" class="style2-input ps-5 form-control text-grey-900 font-xsss fw-600" placeholder="Your Name" required>
+                            </div>
+                            <div class="form-group icon-input mb-3">
+                                <i class="font-sm ti-email text-grey-500 pe-0"></i>
+                                <input type="email" name="email" class="style2-input ps-5 form-control text-grey-900 font-xsss fw-600" placeholder="Your Email Address" required>
+                            </div>
+                            <div class="form-group icon-input mb-3">
+                                <input type="password" name="password" class="style2-input ps-5 form-control text-grey-900 font-xss ls-3" placeholder="Password" required>
+                                <i class="font-sm ti-lock text-grey-500 pe-0"></i>
+                            </div>
+                            <div class="form-group icon-input mb-1">
+                                <input type="password" name="confirm_password" class="style2-input ps-5 form-control text-grey-900 font-xss ls-3" placeholder="Confirm Password" required>
+                                <i class="font-sm ti-lock text-grey-500 pe-0"></i>
+                            </div>
+                            <div class="form-check text-left mb-3">
+                                <input type="checkbox" name="terms" class="form-check-input mt-2" id="exampleCheck2" required>
+                                <label class="form-check-label font-xsss text-grey-500" for="exampleCheck2">Accept Terms and Conditions</label>
+                            </div>
+                    
+                            <div class="col-sm-12 p-0 text-left">
+                                <div class="form-group mb-1"><input type="submit" class="form-control text-center style2-input text-white fw-600 bg-dark border-0 p-0" value="Register"></div>
+                                <h6 class="text-grey-500 font-xsss fw-500 mt-0 mb-0 lh-32">Already have account <a href="login.php" class="fw-700 ms-1">Login</a></h6>
+                            </div>
                         </form>
-                         
                     </div>
                 </div> 
             </div>
         </div>
+
+
     </div>
 
     <!-- Modal Login -->

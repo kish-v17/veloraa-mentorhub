@@ -27,46 +27,67 @@
                                 <div class="row">
                                     <div class="col-lg-6 mb-3">
                                         <div class="form-group">
-                                            <label class="mont-font fw-600 font-xsss">First Name</label>
+                                            <label class="mont-font fw-600 font-xsss">Full Name</label>
                                             <input type="text" class="form-control">
                                         </div>        
                                     </div>
 
                                     <div class="col-lg-6 mb-3">
                                         <div class="form-group">
-                                            <label class="mont-font fw-600 font-xsss">Last Name</label>
-                                            <input type="text" class="form-control">
+                                            <label class="mont-font fw-600 font-xsss">Email</label>
+                                            <input type="text" class="form-control"  value="hello@gmail.com" readonly>
                                         </div>        
                                     </div>
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-lg-6 mb-3">
-                                        <div class="form-group">
-                                            <label class="mont-font fw-600 font-xsss">Email</label>
-                                            <input type="text" class="form-control">
-                                        </div>        
-                                    </div>
-
                                     <div class="col-lg-6 mb-3">
                                         <div class="form-group">
                                             <label class="mont-font fw-600 font-xsss">Phone</label>
                                             <input type="text" class="form-control">
                                         </div>        
                                     </div>
+
+                                    <div class="col-lg-6 mb-3">
+                                        <div class="form-group">
+                                            <label class="mont-font fw-600 font-xsss">City</label>
+                                            <input type="text" class="form-control">
+                                        </div>        
+                                    </div>
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-lg-12 mb-3">
+                                    <div class="col-lg-6 mb-3">
+                                        <div class="form-group">
+                                            <label class="mont-font fw-600 font-xsss">State</label>
+                                            <input type="text" class="form-control">
+                                        </div>        
+                                    </div>
+                                    <div class="col-lg-6 mb-3">
                                         <div class="form-group">
                                             <label class="mont-font fw-600 font-xsss">Country</label>
                                             <input type="text" class="form-control">
                                         </div>        
                                     </div>
-
+                                </div>
+                                
+                                <div class="row">
                                     <div class="col-lg-12 mb-3">
+                                        <label class="mont-font fw-600 font-xsss">About</label>
+                                        <textarea class="form-control mb-0 p-3 h100 lh-16" rows="5" placeholder="Write your message..." spellcheck="false"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-6 mb-3">
                                         <div class="form-group">
-                                            <label class="mont-font fw-600 font-xsss">Address</label>
+                                            <label class="mont-font fw-600 font-xsss">Github Id</label>
+                                            <input type="text" class="form-control">
+                                        </div>        
+                                    </div>
+                                    <div class="col-lg-6 mb-3">
+                                        <div class="form-group">
+                                            <label class="mont-font fw-600 font-xsss">Linked Id</label>
                                             <input type="text" class="form-control">
                                         </div>        
                                     </div>
@@ -75,17 +96,18 @@
                                 <div class="row">
                                     <div class="col-lg-6 mb-3">
                                         <div class="form-group">
-                                            <label class="mont-font fw-600 font-xsss">Twon / City</label>
-                                            <input type="text" class="form-control">
+                                            <label class="mont-font fw-600 font-xsss">Skills</label>
+                                            <select class="form-control">
+                                                <option value="">--Select Skills--</option>
+                                                <option value="c">c</option>
+                                                <option value="cpp">c++</option>
+                                                <option value="java">Java</option>
+                                                <option value="asp.net">ASP.net</option>
+                                                <option value="php">PHP</option>
+                                            </select>
                                         </div>        
                                     </div>
-
-                                    <div class="col-lg-6 mb-3">
-                                        <div class="form-group">
-                                            <label class="mont-font fw-600 font-xsss">Postcode</label>
-                                            <input type="text" class="form-control">
-                                        </div>        
-                                    </div>
+                                </div>
 
                                     <div class="col-lg-12 mb-3">
                                         <div class="card mt-3 border-0">
@@ -101,13 +123,9 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-lg-12 mb-3">
-                                        <label class="mont-font fw-600 font-xsss">Description</label>
-                                        <textarea class="form-control mb-0 p-3 h100 bg-greylight lh-16" rows="5" placeholder="Write your message..." spellcheck="false"></textarea>
-                                    </div>
 
                                     <div class="col-lg-12">
-                                        <a href="#" class="bg-current text-center text-white font-xsss fw-600 p-3 w175 rounded-3 d-inline-block">Save</a>
+                                        <a href="#" class="bg-current text-center text-white font-xsss fw-600 p-3 w175 rounded-3 d-inline-block">Update</a>
                                     </div>
                                 </div>
 
