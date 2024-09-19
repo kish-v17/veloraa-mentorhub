@@ -1,8 +1,7 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8">  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Sociala - Social Network App HTML Template </title>
@@ -13,6 +12,9 @@
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
     <!-- Custom Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/emoji.css">
+    
+    <link rel="stylesheet" href="css/lightbox.css">
 
 </head>
 
@@ -45,7 +47,7 @@
             <a href="default-group.php" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-user font-lg bg-greylight btn-round-lg theme-dark-bg text-grey-500 "></i></a>
             <a href="shop-2.php" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-shopping-bag font-lg bg-greylight btn-round-lg theme-dark-bg text-grey-500 "></i></a>
 
-            <a href="#" class="p-2 text-center ms-auto menu-icon" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-toggle="dropdown"><span class="dot-count bg-warning"></span><i class="feather-bell font-xl text-current"></i></a>
+            <a href="#" class="p-2 text-center ms-auto menu-icon" id="dropdownMenu3" data-bs-toggle="dropdown" aria-expanded="false"><span class="dot-count bg-warning"></span><i class="feather-bell font-xl text-current"></i></a>
             <div class="dropdown-menu dropdown-menu-end p-4 rounded-3 border-0 shadow-lg" aria-labelledby="dropdownMenu3">
                 
                 <h4 class="fw-700 font-xss mb-4">Notification</h4>
@@ -181,67 +183,41 @@
         </div>
         <!-- navigation top -->
 
-        
+        <!-- navigation left -->
+        <nav class="navigation scroll-bar">
+            <div class="container ps-0 pe-0">
+                <div class="nav-content">
+                    <div class="nav-wrap bg-white bg-transparent-card rounded-xxl shadow-xss pt-3 pb-1 mb-2 mt-2">
+                        <div class="nav-caption fw-600 font-xssss text-grey-500"><span>New </span>Feeds</div>
+                        <ul class="mb-1 top-content">
+                            <li class="logo d-none d-xl-block d-lg-block"></li>
+                            <li><a href="default.php" class="nav-content-bttn open-font" ><i class="feather-tv btn-round-md bg-blue-gradiant me-3"></i><span>Newsfeed</span></a></li>
+                            <li><a href="default-badge.php" class="nav-content-bttn open-font" ><i class="feather-award btn-round-md bg-red-gradiant me-3"></i><span>Badges</span></a></li>
+                            <li><a href="default-storie.php" class="nav-content-bttn open-font" ><i class="feather-globe btn-round-md bg-gold-gradiant me-3"></i><span>Explore Stories</span></a></li>
+                            <li><a href="default-group.php" class="nav-content-bttn open-font" ><i class="feather-zap btn-round-md bg-mini-gradiant me-3"></i><span>Popular Groups</span></a></li>
+                            <li><a href="user-page.php" class="nav-content-bttn open-font"><i class="feather-user btn-round-md bg-primary-gradiant me-3"></i><span>Author Profile </span></a></li>                        
+                        </ul>
+                    </div>
 
-        <!-- main content -->
-        <div class="main-content pt-0 bg-white ps-0 pe-0">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-6 col-md-8 text-center default-page vh-100 align-items-center d-flex">
-                        <div class="card border-0 text-center d-block p-0">
-                            <img src="images/bg-43.png" alt="icon" class="w200 mb-4 ms-auto me-auto pt-md-5">
-                            <h1 class="fw-700 text-grey-900 display3-size display4-md-size">Oops! It looks like you're lost.</h1>
-                            <p class="text-grey-500 font-xsss">The page you're looking for isn't available. Try to search again or use the go to.</p>
-                            <a href="index.php" class="p-3 w175 bg-current text-white d-inline-block text-center fw-600 font-xssss rounded-3 text-uppercase ls-3">Home Page</a>
-                        </div>
+                    <div class="nav-wrap bg-white bg-transparent-card rounded-xxl shadow-xss pt-3 pb-1 mb-2">
+                        <div class="nav-caption fw-600 font-xssss text-grey-500"><span>More </span>Pages</div>
+                        <ul class="mb-3">
+                            <li><a href="default-email-box.php" class="nav-content-bttn open-font"><i class="font-xl text-current feather-inbox me-3"></i><span>Email Box</span><span class="circle-count bg-warning mt-1">584</span></a></li>
+                            <li><a href="default-hotel.php" class="nav-content-bttn open-font"><i class="font-xl text-current feather-home me-3"></i><span>Near Hotel</span></a></li>
+                            <li><a href="default-event.php" class="nav-content-bttn open-font"><i class="font-xl text-current feather-map-pin me-3"></i><span>Latest Event</span></a></li>
+                            <li><a href="default-live-stream.php" class="nav-content-bttn open-font"><i class="font-xl text-current feather-youtube me-3"></i><span>Live Stream</span></a></li>                        
+                        </ul>
+                    </div>
+                    <div class="nav-wrap bg-white bg-transparent-card rounded-xxl shadow-xss pt-3 pb-1">
+                        <div class="nav-caption fw-600 font-xssss text-grey-500"><span></span> Account</div>
+                        <ul class="mb-1">
+                            <li class="logo d-none d-xl-block d-lg-block"></li>
+                            <li><a href="default-settings.php" class="nav-content-bttn open-font h-auto pt-2 pb-2"><i class="font-sm feather-settings me-3 text-grey-500"></i><span>Settings</span></a></li>
+                            <li><a href="default-analytics.php" class="nav-content-bttn open-font h-auto pt-2 pb-2"><i class="font-sm feather-pie-chart me-3 text-grey-500"></i><span>Analytics</span></a></li>
+                            <li><a href="default-message.php" class="nav-content-bttn open-font h-auto pt-2 pb-2"><i class="font-sm feather-message-square me-3 text-grey-500"></i><span>Chat</span><span class="circle-count bg-warning mt-0">23</span></a></li>
+                        </ul>
                     </div>
                 </div>
-            </div> 
-        </div>
-        <!-- main content -->
-
-        
-        <div class="app-footer border-0 shadow-lg bg-primary-gradiant">
-            <a href="default.php" class="nav-content-bttn nav-center"><i class="feather-home"></i></a>
-            <a href="default-follower.php" class="nav-content-bttn"><i class="feather-package"></i></a>
-            <a href="default-live-stream.php" class="nav-content-bttn" data-tab="chats"><i class="feather-layout"></i></a>            
-            <a href="shop-2.php" class="nav-content-bttn"><i class="feather-layers"></i></a>
-            <a href="default-settings.php" class="nav-content-bttn"><img src="images/female-profile.png" alt="user" class="w30 shadow-xss"></a>
-        </div>
-
-        <div class="app-header-search">
-            <form class="search-form">
-                <div class="form-group searchbox mb-0 border-0 p-1">
-                    <input type="text" class="form-control border-0" placeholder="Search...">
-                    <i class="input-icon">
-                        <ion-icon name="search-outline" role="img" class="md hydrated" aria-label="search outline"></ion-icon>
-                    </i>
-                    <a href="#" class="ms-1 mt-1 d-inline-block close searchbox-close">
-                        <i class="ti-close font-xs"></i>
-                    </a>
-                </div>
-            </form>
-        </div>
-
-    </div>
-    
-    <script src="js/plugin.js"></script>
-    <script src="js/countdown.js"></script> 
-    <script src="js/scripts.js"></script>
-
-    <script>
-        $(function () {
-
-           $('.timer').countdown('2021/6/31', function(event) {
-              var $this = $(this).php(event.strftime(''
-                // + '<span>%w</span> weeks '
-                + '<div class="time-count"><span class="text-time">%d</span> <span class="text-day">Day</span></div> '
-                + '<div class="time-count"><span class="text-time">%H</span> <span class="text-day">Hours</span> </div> '
-                + '<div class="time-count"><span class="text-time">%M</span> <span class="text-day">Min</span> </div> '
-                + '<div class="time-count"><span class="text-time">%S</span> <span class="text-day">Sec</span> </div> '));
-            });
-        });
-    </script>
-</body>
-
-</html>
+            </div>
+        </nav>
+        <!-- navigation left -->
