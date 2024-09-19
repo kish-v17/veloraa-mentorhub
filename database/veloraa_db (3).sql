@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Sep 19, 2024 at 11:27 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.0.28
+-- Host: localhost:3306
+-- Generation Time: Sep 19, 2024 at 10:04 AM
+-- Server version: 8.0.30
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,8 +28,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `follow_tbl` (
-  `F_MentorId` int(11) DEFAULT NULL,
-  `F_FollowedById` int(11) DEFAULT NULL
+  `F_MentorId` int DEFAULT NULL,
+  `F_FollowedById` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -39,22 +39,22 @@ CREATE TABLE `follow_tbl` (
 --
 
 CREATE TABLE `user_tbl` (
-  `U_Id` int(11) NOT NULL,
-  `U_Fnm` varchar(60) NOT NULL,
-  `U_Email` varchar(60) NOT NULL,
-  `U_Phn` varchar(60) NOT NULL,
-  `U_Pwd` varchar(255) NOT NULL,
-  `U_City` varchar(60) NOT NULL,
-  `U_State` varchar(60) NOT NULL,
-  `U_Country` varchar(60) NOT NULL,
-  `U_About` text NOT NULL,
-  `U_GitHub` varchar(60) NOT NULL,
-  `U_LinkedIn` varchar(60) NOT NULL,
-  `U_Skill` text NOT NULL,
-  `U_Profile` text NOT NULL,
-  `U_Status` tinyint(1) NOT NULL,
-  `U_Fee` decimal(10,0) NOT NULL,
-  `U_Role` int(11) NOT NULL
+  `U_Id` int NOT NULL,
+  `U_Fnm` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `U_Email` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `U_Phn` varchar(20) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `U_Pwd` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `U_City` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `U_State` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `U_Country` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `U_About` text COLLATE utf8mb4_general_ci,
+  `U_GitHub` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `U_LinkedIn` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `U_Skill` text COLLATE utf8mb4_general_ci,
+  `U_Profile` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `U_Status` tinyint(1) DEFAULT '0',
+  `U_Fee` decimal(10,2) DEFAULT '0.00',
+  `U_Role` tinyint(1) DEFAULT '2'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -62,18 +62,12 @@ CREATE TABLE `user_tbl` (
 --
 
 INSERT INTO `user_tbl` (`U_Id`, `U_Fnm`, `U_Email`, `U_Phn`, `U_Pwd`, `U_City`, `U_State`, `U_Country`, `U_About`, `U_GitHub`, `U_LinkedIn`, `U_Skill`, `U_Profile`, `U_Status`, `U_Fee`, `U_Role`) VALUES
-(1, 'rixit', 'rixit05@gmail.com', '', '$2y$10$mT3lJGYokfyJQUrlBtg1DeFfsLbBF97tX0RgWjfUj1O72BxO3oBE6', '', '', '', '', '', '', '', '', 0, 0, 3);
+(1, 'Rixit', 'janujkumar409@rku.ac.in', NULL, '$2y$10$5Y.w0lgPqY2Rn3z7vIXuz.sidDlkQGVG95Tgew9HxUWj19Pei/GK2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0.00, 3),
+(2, 'Kishan', 'kishan@gmail.com', '9090909090', '$2y$10$5Y.w0lgPqY2Rn3z7vIXuz.sidDlkQGVG95Tgew9HxUWj19Pei/GK2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0.00, 2);
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `follow_tbl`
---
-ALTER TABLE `follow_tbl`
-  ADD KEY `F_MentorId` (`F_MentorId`),
-  ADD KEY `F_FollowedById` (`F_FollowedById`);
 
 --
 -- Indexes for table `user_tbl`
@@ -90,18 +84,7 @@ ALTER TABLE `user_tbl`
 -- AUTO_INCREMENT for table `user_tbl`
 --
 ALTER TABLE `user_tbl`
-  MODIFY `U_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `follow_tbl`
---
-ALTER TABLE `follow_tbl`
-  ADD CONSTRAINT `follow_tbl_ibfk_1` FOREIGN KEY (`F_MentorId`) REFERENCES `user_tbl` (`U_Id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `follow_tbl_ibfk_2` FOREIGN KEY (`F_FollowedById`) REFERENCES `user_tbl` (`U_Id`) ON DELETE CASCADE;
+  MODIFY `U_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
