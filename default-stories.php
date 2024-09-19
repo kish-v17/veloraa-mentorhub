@@ -28,7 +28,7 @@
         <!-- navigation top-->
         <div class="nav-header bg-white shadow-xs border-0">
             <div class="nav-top">
-                <a href="index.html"><i class="feather-zap text-success display1-size me-2 ms-0"></i><span class="d-inline-block fredoka-font ls-3 fw-600 text-current font-xxl logo-text mb-0">Sociala. </span> </a>
+                <a href="index.php"><i class="feather-zap text-success display1-size me-2 ms-0"></i><span class="d-inline-block fredoka-font ls-3 fw-600 text-current font-xxl logo-text mb-0">Sociala. </span> </a>
                 <a href="#" class="close-nav d-inline-block d-lg-none"><i class="ti-close bg-grey mb-4 btn-round-sm font-xssss fw-700 text-dark ms-auto me-2 "></i></a>
             </div>
             <button class="nav-menu"></button>
@@ -38,14 +38,14 @@
                     <input type="text" placeholder="Start typing to search.." class="bg-grey border-0 lh-32 pt-2 pb-2 ps-5 pe-3 font-xsss fw-500 rounded-xl w350">
                 </div>
             </form>
-            <a href="default.html" class="p-2 text-center ms-3 menu-icon center-menu-icon"><i class="feather-home font-lg bg-greylight btn-round-lg text-grey-500 "></i></a>
-            <a href="message.html" class="p-2 text-center ms-0 menu-icon"><i class="feather-zap font-lg bg-greylight btn-round-lg text-grey-500 "></i></a>
-            <a href="message.html" class="p-2 text-center ms-0 menu-icon"><i class="feather-video font-lg alert-primary btn-round-lg text-current "></i></a>
-            <a href="message.html" class="p-2 text-center ms-0 menu-icon"><i class="feather-user font-lg bg-greylight btn-round-lg text-grey-500 "></i></a>
-            <a href="message.html" class="p-2 text-center ms-0 menu-icon"><i class="feather-shopping-bag font-lg bg-greylight btn-round-lg text-grey-500 "></i></a>
+            <a href="default.php" class="p-2 text-center ms-3 menu-icon center-menu-icon"><i class="feather-home font-lg bg-greylight btn-round-lg text-grey-500 "></i></a>
+            <a href="message.php" class="p-2 text-center ms-0 menu-icon"><i class="feather-zap font-lg bg-greylight btn-round-lg text-grey-500 "></i></a>
+            <a href="message.php" class="p-2 text-center ms-0 menu-icon"><i class="feather-video font-lg alert-primary btn-round-lg text-current "></i></a>
+            <a href="message.php" class="p-2 text-center ms-0 menu-icon"><i class="feather-user font-lg bg-greylight btn-round-lg text-grey-500 "></i></a>
+            <a href="message.php" class="p-2 text-center ms-0 menu-icon"><i class="feather-shopping-bag font-lg bg-greylight btn-round-lg text-grey-500 "></i></a>
 
             <a href="#" class="p-2 text-center ms-auto menu-icon"><span class="dot-count bg-warning"></span><i class="feather-bell font-xl text-current"></i></a>
-            <a href="message.html" class="p-2 text-center ms-3 menu-icon center-menu-icon"><i class="feather-message-square font-xl text-current"></i></a>
+            <a href="message.php" class="p-2 text-center ms-3 menu-icon center-menu-icon"><i class="feather-message-square font-xl text-current"></i></a>
             <div class="p-2 text-center ms-3 position-relative dropdown-menu-icon menu-icon cursor-pointer">
                 <i class="feather-settings animation-spin d-inline-block font-xl text-current"></i>
                 <div class="dropdown-menu-settings switchcolor-wrap">
@@ -162,7 +162,7 @@
             </div>
             
 
-            <a href="default-settings.html" class="p-0 ms-3 menu-icon"><img src="images/profile-4.png" alt="user" class="w40 mt--1"></a>
+            <a href="default-settings.php" class="p-0 ms-3 menu-icon"><img src="images/profile-4.png" alt="user" class="w40 mt--1"></a>
             <a href="#" class="ms-auto menu-search-icon"><i class="feather-search text-grey-900 font-lg"></i></a>
         </div>
         <!-- navigation top -->
@@ -175,11 +175,11 @@
                         <div class="nav-caption fw-600 font-xssss text-grey-500"><span>New </span>Feeds</div>
                         <ul class="mb-1">
                             <li class="logo d-none d-xl-block d-lg-block"></li>
-                            <li><a href="default.html" class="nav-content-bttn open-font" data-tab="chats"><i class="feather-tv btn-round-md bg-blue-gradiant me-3"></i><span>Newsfeed</span></a></li>
-                            <li><a href="default-video.html" class="nav-content-bttn open-font" data-tab="friends"><i class="feather-shopping-bag btn-round-md bg-red-gradiant me-3"></i><span>Followers</span></a></li>
-                            <li><a href="default-channel.html" class="nav-content-bttn open-font" data-tab="favorites"><i class="feather-globe btn-round-md bg-gold-gradiant me-3"></i><span>Explore Channel</span></a></li>
-                            <li><a href="default-live-stream.html" class="nav-content-bttn open-font" data-tab="favorites"><i class="feather-play-circle btn-round-md bg-mini-gradiant me-3"></i><span>Live Stream</span></a></li>
-                            <li class="flex-lg-brackets"><a href="shop-2.html" data-tab="archived" class="nav-content-bttn open-font"><i class="feather-video btn-round-md bg-primary-gradiant me-3"></i><span>Saved Course</span></a></li>                        
+                            <li><a href="default.php" class="nav-content-bttn open-font" data-tab="chats"><i class="feather-tv btn-round-md bg-blue-gradiant me-3"></i><span>Newsfeed</span></a></li>
+                            <li><a href="default-video.php" class="nav-content-bttn open-font" data-tab="friends"><i class="feather-shopping-bag btn-round-md bg-red-gradiant me-3"></i><span>Followers</span></a></li>
+                            <li><a href="default-channel.php" class="nav-content-bttn open-font" data-tab="favorites"><i class="feather-globe btn-round-md bg-gold-gradiant me-3"></i><span>Explore Channel</span></a></li>
+                            <li><a href="default-live-stream.php" class="nav-content-bttn open-font" data-tab="favorites"><i class="feather-play-circle btn-round-md bg-mini-gradiant me-3"></i><span>Live Stream</span></a></li>
+                            <li class="flex-lg-brackets"><a href="shop-2.php" data-tab="archived" class="nav-content-bttn open-font"><i class="feather-video btn-round-md bg-primary-gradiant me-3"></i><span>Saved Course</span></a></li>                        
                         </ul>
                     </div>
 
@@ -196,9 +196,9 @@
                         <div class="nav-caption fw-600 font-xssss text-grey-500"><span></span> Account</div>
                         <ul class="mb-1">
                             <li class="logo d-none d-xl-block d-lg-block"></li>
-                            <li><a href="default-settings.html" class="nav-content-bttn open-font h-auto pt-2 pb-2"><i class="font-sm feather-settings me-3 text-grey-500"></i><span>Settings</span></a></li>
-                            <li><a href="default-analytics.html" class="nav-content-bttn open-font h-auto pt-2 pb-2"><i class="font-sm feather-pie-chart me-3 text-grey-500"></i><span>Analytics</span></a></li>
-                            <li><a href="message.html" class="nav-content-bttn open-font h-auto pt-2 pb-2"><i class="font-sm feather-message-square me-3 text-grey-500"></i><span>Chat</span><span class="circle-count bg-warning mt-0">23</span></a></li>
+                            <li><a href="default-settings.php" class="nav-content-bttn open-font h-auto pt-2 pb-2"><i class="font-sm feather-settings me-3 text-grey-500"></i><span>Settings</span></a></li>
+                            <li><a href="default-analytics.php" class="nav-content-bttn open-font h-auto pt-2 pb-2"><i class="font-sm feather-pie-chart me-3 text-grey-500"></i><span>Analytics</span></a></li>
+                            <li><a href="message.php" class="nav-content-bttn open-font h-auto pt-2 pb-2"><i class="font-sm feather-message-square me-3 text-grey-500"></i><span>Chat</span><span class="circle-count bg-warning mt-0">23</span></a></li>
                         </ul>
                     </div>
                 </div>
@@ -243,7 +243,7 @@
                                 <img src="images/user-8.png" alt="image" class="w45">
                             </figure>
                             <h3 class="fw-700 mb-0 mt-1">
-                                <a class="font-xsss text-grey-900 d-block" href="chat.html">Hurin Seary</a>
+                                <a class="font-xsss text-grey-900 d-block" href="chat.php">Hurin Seary</a>
                             </h3>
                             <span class="d-block">What's up, how are you?</span>
                             <span class="badge mt-0 text-grey-500 badge-pill">4:09 pm</span>
@@ -253,20 +253,20 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="bg-transparent list-group-item no-icon ps-0"><figure class="avatar float-left mb-0 me-3"><img src="images/user-7.png" alt="image" class="w45"></figure><h3 class="fw-700 mb-0 mt-1"><a class="font-xsss text-grey-900 d-block" href="chat.html">Victor Exrixon</a></h3> <span class="d-block">What's up, how are you?</span> <span class="badge badge-primary text-white badge-pill">2</span></li>
-                        <li class="bg-transparent list-group-item no-icon ps-0"><figure class="avatar float-left mb-0 me-3"><img src="images/user-12.png" alt="image" class="w45"></figure><h3 class="fw-700 mb-0 mt-1"><a class="font-xsss text-grey-900 d-block" href="chat.html">Surfiya Zakir</a></h3> <span class="d-block">What's up, how are you?</span> <span class="badge badge-danger text-white badge-pill">6</span></li>
-                        <li class="bg-transparent list-group-item no-icon ps-0"><figure class="avatar float-left mb-0 me-3"><img src="images/user-4.png" alt="image" class="w45"></figure><h3 class="fw-700 mb-0 mt-1"><a class="font-xsss text-grey-900 d-block" href="chat.html">Goria Coast</a></h3> <span class="d-block">What's up, how are you?</span> <span class="badge badge-primary text-white badge-pill">8</span></li>
+                        <li class="bg-transparent list-group-item no-icon ps-0"><figure class="avatar float-left mb-0 me-3"><img src="images/user-7.png" alt="image" class="w45"></figure><h3 class="fw-700 mb-0 mt-1"><a class="font-xsss text-grey-900 d-block" href="chat.php">Victor Exrixon</a></h3> <span class="d-block">What's up, how are you?</span> <span class="badge badge-primary text-white badge-pill">2</span></li>
+                        <li class="bg-transparent list-group-item no-icon ps-0"><figure class="avatar float-left mb-0 me-3"><img src="images/user-12.png" alt="image" class="w45"></figure><h3 class="fw-700 mb-0 mt-1"><a class="font-xsss text-grey-900 d-block" href="chat.php">Surfiya Zakir</a></h3> <span class="d-block">What's up, how are you?</span> <span class="badge badge-danger text-white badge-pill">6</span></li>
+                        <li class="bg-transparent list-group-item no-icon ps-0"><figure class="avatar float-left mb-0 me-3"><img src="images/user-4.png" alt="image" class="w45"></figure><h3 class="fw-700 mb-0 mt-1"><a class="font-xsss text-grey-900 d-block" href="chat.php">Goria Coast</a></h3> <span class="d-block">What's up, how are you?</span> <span class="badge badge-primary text-white badge-pill">8</span></li>
 
-                        <li class="bg-transparent list-group-item ps-0"><figure class="avatar float-left mb-0 me-3"><img src="images/user-3.png" alt="image" class="w45"></figure><h3 class="fw-700 mb-0 mt-1"><a class="font-xsss text-grey-900 d-block" href="chat.html">Hurin Seary</a></h3> <span class="d-block">What's up, how are you?</span></li>
-                        <li class="bg-transparent list-group-item ps-0"><figure class="avatar float-left mb-0 me-3"><img src="images/user-2.png" alt="image" class="w45"></figure><h3 class="fw-700 mb-0 mt-1"><a class="font-xsss text-grey-900 d-block" href="chat.html">Victor Exrixon</a></h3> <span class="d-block">What's up, how are you?</span></li>
-                        <li class="bg-transparent list-group-item ps-0"><figure class="avatar float-left mb-0 me-3"><img src="images/user-8.png" alt="image" class="w45"></figure><h3 class="fw-700 mb-0 mt-1"><a class="font-xsss text-grey-900 d-block" href="chat.html">Surfiya Zakir</a></h3> <span class="d-block">What's up, how are you?</span></li>
-                        <li class="bg-transparent list-group-item ps-0"><figure class="avatar float-left mb-0 me-3"><img src="images/user-4.png" alt="image" class="w45"></figure><h3 class="fw-700 mb-0 mt-1"><a class="font-xsss text-grey-900 d-block" href="chat.html">Goria Coast</a></h3> <span class="d-block">What's up, how are you?</span></li>
+                        <li class="bg-transparent list-group-item ps-0"><figure class="avatar float-left mb-0 me-3"><img src="images/user-3.png" alt="image" class="w45"></figure><h3 class="fw-700 mb-0 mt-1"><a class="font-xsss text-grey-900 d-block" href="chat.php">Hurin Seary</a></h3> <span class="d-block">What's up, how are you?</span></li>
+                        <li class="bg-transparent list-group-item ps-0"><figure class="avatar float-left mb-0 me-3"><img src="images/user-2.png" alt="image" class="w45"></figure><h3 class="fw-700 mb-0 mt-1"><a class="font-xsss text-grey-900 d-block" href="chat.php">Victor Exrixon</a></h3> <span class="d-block">What's up, how are you?</span></li>
+                        <li class="bg-transparent list-group-item ps-0"><figure class="avatar float-left mb-0 me-3"><img src="images/user-8.png" alt="image" class="w45"></figure><h3 class="fw-700 mb-0 mt-1"><a class="font-xsss text-grey-900 d-block" href="chat.php">Surfiya Zakir</a></h3> <span class="d-block">What's up, how are you?</span></li>
+                        <li class="bg-transparent list-group-item ps-0"><figure class="avatar float-left mb-0 me-3"><img src="images/user-4.png" alt="image" class="w45"></figure><h3 class="fw-700 mb-0 mt-1"><a class="font-xsss text-grey-900 d-block" href="chat.php">Goria Coast</a></h3> <span class="d-block">What's up, how are you?</span></li>
 
-                        <li class="bg-transparent list-group-item ps-0"><figure class="avatar float-left mb-0 me-3"><img src="images/user-3.png" alt="image" class="w45"></figure><h3 class="fw-700 mb-0 mt-1"><a class="font-xsss text-grey-900 d-block" href="chat.html">Hurin Seary</a></h3> <span class="d-block">What's up, how are you?</span></li>
-                        <li class="bg-transparent list-group-item ps-0"><figure class="avatar float-left mb-0 me-3"><img src="images/user-8.png" alt="image" class="w45"></figure><h3 class="fw-700 mb-0 mt-1"><a class="font-xsss text-grey-900 d-block" href="chat.html">Surfiya Zakir</a></h3> <span class="d-block">What's up, how are you?</span></li>
-                        <li class="bg-transparent list-group-item ps-0"><figure class="avatar float-left mb-0 me-3"><img src="images/user-4.png" alt="image" class="w45"></figure><h3 class="fw-700 mb-0 mt-1"><a class="font-xsss text-grey-900 d-block" href="chat.html">Goria Coast</a></h3> <span class="d-block">What's up, how are you?</span></li>
+                        <li class="bg-transparent list-group-item ps-0"><figure class="avatar float-left mb-0 me-3"><img src="images/user-3.png" alt="image" class="w45"></figure><h3 class="fw-700 mb-0 mt-1"><a class="font-xsss text-grey-900 d-block" href="chat.php">Hurin Seary</a></h3> <span class="d-block">What's up, how are you?</span></li>
+                        <li class="bg-transparent list-group-item ps-0"><figure class="avatar float-left mb-0 me-3"><img src="images/user-8.png" alt="image" class="w45"></figure><h3 class="fw-700 mb-0 mt-1"><a class="font-xsss text-grey-900 d-block" href="chat.php">Surfiya Zakir</a></h3> <span class="d-block">What's up, how are you?</span></li>
+                        <li class="bg-transparent list-group-item ps-0"><figure class="avatar float-left mb-0 me-3"><img src="images/user-4.png" alt="image" class="w45"></figure><h3 class="fw-700 mb-0 mt-1"><a class="font-xsss text-grey-900 d-block" href="chat.php">Goria Coast</a></h3> <span class="d-block">What's up, how are you?</span></li>
 
-                        <li class="bg-transparent list-group-item ps-0"><figure class="avatar float-left mb-0 me-3"><img src="images/user-3.png" alt="image" class="w45"></figure><h3 class="fw-700 mb-0 mt-1"><a class="font-xsss text-grey-900 d-block" href="chat.html">Hurin Seary</a></h3> <span class="d-block">What's up, how are you?</span></li>
+                        <li class="bg-transparent list-group-item ps-0"><figure class="avatar float-left mb-0 me-3"><img src="images/user-3.png" alt="image" class="w45"></figure><h3 class="fw-700 mb-0 mt-1"><a class="font-xsss text-grey-900 d-block" href="chat.php">Hurin Seary</a></h3> <span class="d-block">What's up, how are you?</span></li>
                     </ul>
                 </div>
 
@@ -274,11 +274,11 @@
         </div>
         <!-- right chat -->
         <div class="app-footer border-0 shadow-lg">
-            <a href="default.html" class="nav-content-bttn nav-center"><i class="feather-home"></i></a>
-            <a href="default-video.html" class="nav-content-bttn"><i class="feather-package"></i></a>
-            <a href="default-live-stream.html" class="nav-content-bttn" data-tab="chats"><i class="feather-layout"></i></a>            
-            <a href="shop-2.html" class="nav-content-bttn"><i class="feather-layers"></i></a>
-            <a href="default-settings.html" class="nav-content-bttn"><img src="images/female-profile.png" alt="user" class="w30 shadow-xss"></a>
+            <a href="default.php" class="nav-content-bttn nav-center"><i class="feather-home"></i></a>
+            <a href="default-video.php" class="nav-content-bttn"><i class="feather-package"></i></a>
+            <a href="default-live-stream.php" class="nav-content-bttn" data-tab="chats"><i class="feather-layout"></i></a>            
+            <a href="shop-2.php" class="nav-content-bttn"><i class="feather-layers"></i></a>
+            <a href="default-settings.php" class="nav-content-bttn"><img src="images/female-profile.png" alt="user" class="w30 shadow-xss"></a>
         </div>
 
         <div class="app-header-search">
