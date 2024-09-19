@@ -35,4 +35,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['code'])) {
         echo json_encode(['status' => 'No signaling data available']);
     }
 }
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+    if (file_exists($signalingFile)) {
+        $data = json_decode(file_get_contents($signalingFile), true);
+        
+        // Check if an SDP offer exists
+        if (isset($data['sdp']) && $data['sdp']['type'] == 'offer') {
+            echo json_encode(['status' => 'Call in progress']);
+        } else {
+            echo json_encode(['status' => 'No active call']);
+        }
+    } else {
+        echo json_encode(['status' => 'No signaling data available']);
+    }
+}
+
 ?>
