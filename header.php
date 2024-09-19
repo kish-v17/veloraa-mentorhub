@@ -1,5 +1,6 @@
 <?php
 $current_page = basename($_SERVER['PHP_SELF']);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,12 +9,12 @@ $current_page = basename($_SERVER['PHP_SELF']);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sociala - Social Network App HTML Template </title>
+    <title>Veloraa MentorHub </title>
 
     <link rel="stylesheet" href="css/themify-icons.css">
     <link rel="stylesheet" href="css/feather.css">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/logo.png">
     <!-- Custom Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/emoji.css">
@@ -33,7 +34,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
         <!-- navigation top-->
         <div class="nav-header bg-white shadow-xs border-0">
             <div class="nav-top">
-                <a href="index.php"><i class="feather-zap text-success display1-size me-2 ms-0"></i><span class="d-inline-block fredoka-font ls-3 fw-600 text-current font-xxl logo-text mb-0">Sociala. </span> </a>
+                <a href="index.php"><img src="images/logo.png" style="height:50px"/><span class="d-inline-block fredoka-font ls-3 fw-600 text-current font-xxl logo-text mb-0">Veloraa</span> </a>
                 <a href="#" class="mob-menu ms-auto me-2 chat-active-btn"><i class="feather-message-circle text-grey-900 font-sm btn-round-md bg-greylight"></i></a>
                 <a href="default-video.php" class="mob-menu me-2"><i class="feather-video text-grey-900 font-sm btn-round-md bg-greylight"></i></a>
                 <a href="#" class="me-2 menu-search-icon mob-menu"><i class="feather-search text-grey-900 font-sm btn-round-md bg-greylight"></i></a>
