@@ -1,0 +1,6 @@
+{
+    "sdp": {
+        "type": "offer",
+        "sdp": "v=0\r\no=- 8920405646969327790 2 IN IP4 127.0.0.1\r\ns=-\r\nt=0 0\r\na=extmap-allow-mixed\r\na=msid-semantic: WMS\r\n"
+    }
+}

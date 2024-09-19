@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'database/db.php'; // Database connection
+require '../database/db.php'; // Database connection
 
 // Fetch all users except the current user
 $stmt = $dbh->prepare("SELECT U_Id, U_Fnm FROM user_tbl WHERE U_Id != :user_id");
