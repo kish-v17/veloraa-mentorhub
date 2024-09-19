@@ -1,6 +1,6 @@
+<?php include('header.php'); ?>
 
-
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,11 +9,11 @@
     <title>Sociala - Social Network App HTML Template </title>
 
     <link rel="stylesheet" href="css/themify-icons.css">
-    <link rel="stylesheet" href="css/feather.css">
+    <link rel="stylesheet" href="css/feather.css"> -->
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+    <!-- <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png"> -->
     <!-- Custom Stylesheet -->
-    <link rel="stylesheet" href="css/style.css">
+    <!-- <link rel="stylesheet" href="css/style.css">
 
 </head>
 
@@ -22,10 +22,10 @@
     <div class="preloader"></div>
 
     
-    <div class="main-wrapper">
+    <div class="main-wrapper"> -->
 
         <!-- navigation top-->
-        <div class="nav-header bg-white shadow-xs border-0">
+        <!-- <div class="nav-header bg-white shadow-xs border-0">
             <div class="nav-top">
                 <a href="index.php"><i class="feather-zap text-success display1-size me-2 ms-0"></i><span class="d-inline-block fredoka-font ls-3 fw-600 text-current font-xxl logo-text mb-0">Sociala. </span> </a>
                 <a href="#" class="mob-menu ms-auto me-2 chat-active-btn"><i class="feather-message-circle text-grey-900 font-sm btn-round-md bg-greylight"></i></a>
@@ -179,11 +179,11 @@
 
             <a href="default-settings.php" class="p-0 ms-3 menu-icon"><img src="images/profile-4.png" alt="user" class="w40 mt--1"></a>
             
-        </div>
+        </div> -->
         <!-- navigation top -->
 
         <!-- navigation left -->
-        <nav class="navigation scroll-bar">
+        <!-- <nav class="navigation scroll-bar">
             <div class="container ps-0 pe-0">
                 <div class="nav-content">
                     <div class="nav-wrap bg-white bg-transparent-card rounded-xxl shadow-xss pt-3 pb-1 mb-2 mt-2">
@@ -218,7 +218,7 @@
                     </div>
                 </div>
             </div>
-        </nav>
+        </nav> -->
         <!-- navigation left -->
         <!-- main content -->
         <div class="main-content bg-white right-chat-active">
