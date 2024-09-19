@@ -1,5 +1,5 @@
-
-<!DOCTYPE html>
+<?php include('header.php'); ?>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,11 +8,11 @@
     <title>Sociala - Social Network App HTML Template </title>
 
     <link rel="stylesheet" href="css/themify-icons.css">
-    <link rel="stylesheet" href="css/feather.css">
+    <link rel="stylesheet" href="css/feather.css"> -->
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+    <!-- <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png"> -->
     <!-- Custom Stylesheet -->
-    <link rel="stylesheet" href="css/style.css">
+    <!-- <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/emoji.css">
     
     <link rel="stylesheet" href="css/lightbox.css">
@@ -24,14 +24,14 @@
     <div class="preloader"></div>
 
     
-    <div class="main-wrapper">
+    <div class="main-wrapper"> -->
 
         <!-- navigation top-->
-        <div class="nav-header bg-white shadow-xs border-0">
+        <!-- <div class="nav-header bg-white shadow-xs border-0">
             <div class="nav-top">
-                <a href="index.php"><i class="feather-zap text-success display1-size me-2 ms-0"></i><span class="d-inline-block fredoka-font ls-3 fw-600 text-current font-xxl logo-text mb-0">Sociala. </span> </a>
+                <a href="index.html"><i class="feather-zap text-success display1-size me-2 ms-0"></i><span class="d-inline-block fredoka-font ls-3 fw-600 text-current font-xxl logo-text mb-0">Sociala. </span> </a>
                 <a href="#" class="mob-menu ms-auto me-2 chat-active-btn"><i class="feather-message-circle text-grey-900 font-sm btn-round-md bg-greylight"></i></a>
-                <a href="default-video.php" class="mob-menu me-2"><i class="feather-video text-grey-900 font-sm btn-round-md bg-greylight"></i></a>
+                <a href="default-video.html" class="mob-menu me-2"><i class="feather-video text-grey-900 font-sm btn-round-md bg-greylight"></i></a>
                 <a href="#" class="me-2 menu-search-icon mob-menu"><i class="feather-search text-grey-900 font-sm btn-round-md bg-greylight"></i></a>
                 <button class="nav-menu me-0 ms-2"></button>
             </div>
@@ -42,11 +42,11 @@
                     <input type="text" placeholder="Start typing to search.." class="bg-grey border-0 lh-32 pt-2 pb-2 ps-5 pe-3 font-xssss fw-500 rounded-xl w350 theme-dark-bg">
                 </div>
             </form>
-            <a href="default.php" class="p-2 text-center ms-3 menu-icon center-menu-icon"><i class="feather-home font-lg alert-primary btn-round-lg theme-dark-bg text-current "></i></a>
-            <a href="default-storie.php" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-zap font-lg bg-greylight btn-round-lg theme-dark-bg text-grey-500 "></i></a>
-            <a href="default-video.php" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-video font-lg bg-greylight btn-round-lg theme-dark-bg text-grey-500 "></i></a>
-            <a href="default-group.php" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-user font-lg bg-greylight btn-round-lg theme-dark-bg text-grey-500 "></i></a>
-            <a href="shop-2.php" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-shopping-bag font-lg bg-greylight btn-round-lg theme-dark-bg text-grey-500 "></i></a>
+            <a href="default.html" class="p-2 text-center ms-3 menu-icon center-menu-icon"><i class="feather-home font-lg alert-primary btn-round-lg theme-dark-bg text-current "></i></a>
+            <a href="default-storie.html" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-zap font-lg bg-greylight btn-round-lg theme-dark-bg text-grey-500 "></i></a>
+            <a href="default-video.html" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-video font-lg bg-greylight btn-round-lg theme-dark-bg text-grey-500 "></i></a>
+            <a href="default-group.html" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-user font-lg bg-greylight btn-round-lg theme-dark-bg text-grey-500 "></i></a>
+            <a href="shop-2.html" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-shopping-bag font-lg bg-greylight btn-round-lg theme-dark-bg text-grey-500 "></i></a>
 
             <a href="#" class="p-2 text-center ms-auto menu-icon" id="dropdownMenu3" data-bs-toggle="dropdown" aria-expanded="false"><span class="dot-count bg-warning"></span><i class="feather-bell font-xl text-current"></i></a>
             <div class="dropdown-menu dropdown-menu-end p-4 rounded-3 border-0 shadow-lg" aria-labelledby="dropdownMenu3">
@@ -179,48 +179,48 @@
             </div>
             
 
-            <a href="default-settings.php" class="p-0 ms-3 menu-icon"><img src="images/profile-4.png" alt="user" class="w40 mt--1"></a>
+            <a href="default-settings.html" class="p-0 ms-3 menu-icon"><img src="images/profile-4.png" alt="user" class="w40 mt--1"></a>
             
-        </div>
+        </div> -->
         <!-- navigation top -->
 
         <!-- navigation left -->
-        <nav class="navigation scroll-bar">
+        <!-- <nav class="navigation scroll-bar">
             <div class="container ps-0 pe-0">
                 <div class="nav-content">
                     <div class="nav-wrap bg-white bg-transparent-card rounded-xxl shadow-xss pt-3 pb-1 mb-2 mt-2">
                         <div class="nav-caption fw-600 font-xssss text-grey-500"><span>New </span>Feeds</div>
                         <ul class="mb-1 top-content">
                             <li class="logo d-none d-xl-block d-lg-block"></li>
-                            <li><a href="default.php" class="nav-content-bttn open-font" ><i class="feather-tv btn-round-md bg-blue-gradiant me-3"></i><span>Newsfeed</span></a></li>
-                            <li><a href="default-badge.php" class="nav-content-bttn open-font" ><i class="feather-award btn-round-md bg-red-gradiant me-3"></i><span>Badges</span></a></li>
-                            <li><a href="default-storie.php" class="nav-content-bttn open-font" ><i class="feather-globe btn-round-md bg-gold-gradiant me-3"></i><span>Explore Stories</span></a></li>
-                            <li><a href="default-group.php" class="nav-content-bttn open-font" ><i class="feather-zap btn-round-md bg-mini-gradiant me-3"></i><span>Popular Groups</span></a></li>
-                            <li><a href="user-page.php" class="nav-content-bttn open-font"><i class="feather-user btn-round-md bg-primary-gradiant me-3"></i><span>Author Profile </span></a></li>                        
+                            <li><a href="default.html" class="nav-content-bttn open-font" ><i class="feather-tv btn-round-md bg-blue-gradiant me-3"></i><span>Newsfeed</span></a></li>
+                            <li><a href="default-badge.html" class="nav-content-bttn open-font" ><i class="feather-award btn-round-md bg-red-gradiant me-3"></i><span>Badges</span></a></li>
+                            <li><a href="default-storie.html" class="nav-content-bttn open-font" ><i class="feather-globe btn-round-md bg-gold-gradiant me-3"></i><span>Explore Stories</span></a></li>
+                            <li><a href="default-group.html" class="nav-content-bttn open-font" ><i class="feather-zap btn-round-md bg-mini-gradiant me-3"></i><span>Popular Groups</span></a></li>
+                            <li><a href="user-page.html" class="nav-content-bttn open-font"><i class="feather-user btn-round-md bg-primary-gradiant me-3"></i><span>Author Profile </span></a></li>                        
                         </ul>
                     </div>
 
                     <div class="nav-wrap bg-white bg-transparent-card rounded-xxl shadow-xss pt-3 pb-1 mb-2">
                         <div class="nav-caption fw-600 font-xssss text-grey-500"><span>More </span>Pages</div>
                         <ul class="mb-3">
-                            <li><a href="default-email-box.php" class="nav-content-bttn open-font"><i class="font-xl text-current feather-inbox me-3"></i><span>Email Box</span><span class="circle-count bg-warning mt-1">584</span></a></li>
-                            <li><a href="default-hotel.php" class="nav-content-bttn open-font"><i class="font-xl text-current feather-home me-3"></i><span>Near Hotel</span></a></li>
-                            <li><a href="default-event.php" class="nav-content-bttn open-font"><i class="font-xl text-current feather-map-pin me-3"></i><span>Latest Event</span></a></li>
-                            <li><a href="default-live-stream.php" class="nav-content-bttn open-font"><i class="font-xl text-current feather-youtube me-3"></i><span>Live Stream</span></a></li>                        
+                            <li><a href="default-email-box.html" class="nav-content-bttn open-font"><i class="font-xl text-current feather-inbox me-3"></i><span>Email Box</span><span class="circle-count bg-warning mt-1">584</span></a></li>
+                            <li><a href="default-hotel.html" class="nav-content-bttn open-font"><i class="font-xl text-current feather-home me-3"></i><span>Near Hotel</span></a></li>
+                            <li><a href="default-event.html" class="nav-content-bttn open-font"><i class="font-xl text-current feather-map-pin me-3"></i><span>Latest Event</span></a></li>
+                            <li><a href="default-live-stream.html" class="nav-content-bttn open-font"><i class="font-xl text-current feather-youtube me-3"></i><span>Live Stream</span></a></li>                        
                         </ul>
                     </div>
                     <div class="nav-wrap bg-white bg-transparent-card rounded-xxl shadow-xss pt-3 pb-1">
                         <div class="nav-caption fw-600 font-xssss text-grey-500"><span></span> Account</div>
                         <ul class="mb-1">
                             <li class="logo d-none d-xl-block d-lg-block"></li>
-                            <li><a href="default-settings.php" class="nav-content-bttn open-font h-auto pt-2 pb-2"><i class="font-sm feather-settings me-3 text-grey-500"></i><span>Settings</span></a></li>
-                            <li><a href="default-analytics.php" class="nav-content-bttn open-font h-auto pt-2 pb-2"><i class="font-sm feather-pie-chart me-3 text-grey-500"></i><span>Analytics</span></a></li>
-                            <li><a href="default-message.php" class="nav-content-bttn open-font h-auto pt-2 pb-2"><i class="font-sm feather-message-square me-3 text-grey-500"></i><span>Chat</span><span class="circle-count bg-warning mt-0">23</span></a></li>
+                            <li><a href="default-settings.html" class="nav-content-bttn open-font h-auto pt-2 pb-2"><i class="font-sm feather-settings me-3 text-grey-500"></i><span>Settings</span></a></li>
+                            <li><a href="default-analytics.html" class="nav-content-bttn open-font h-auto pt-2 pb-2"><i class="font-sm feather-pie-chart me-3 text-grey-500"></i><span>Analytics</span></a></li>
+                            <li><a href="default-message.html" class="nav-content-bttn open-font h-auto pt-2 pb-2"><i class="font-sm feather-message-square me-3 text-grey-500"></i><span>Chat</span><span class="circle-count bg-warning mt-0">23</span></a></li>
                         </ul>
                     </div>
                 </div>
             </div>
-        </nav>
+        </nav> -->
         <!-- navigation left -->
         <!-- main content -->
         <div class="main-content right-chat-active">
@@ -382,323 +382,6 @@
                                     </div>
                                 </div>
                             </div>
-	
-	<!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-     <style> 
-    	@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
-    	.fredoka-font {font-family: 'Fredoka One', cursive;}
-    	body{font-family: 'Montserrat', sans-serif; color: #111;font-size: 14px;font-weight: 400;}
-    	.h100 {height: 100vh;}
-    	.header-wrapper {position: absolute; top:0; width: 100%; padding:20px 0;  }
-    	.p100 {padding: 100px 0;}
-		.pt100 {padding-top: 100px ;}
-		.pt50 {padding-top: 50px;}
-		.pb100 {padding-bottom: 100px; }
-		.pb50 {padding-bottom: 50px; }
-		.banner-content {padding: 0;position: absolute;top: 50%; width: 100%;-webkit-transform: translateY(-50%);-moz-transform: translateY(-50%);-ms-transform: translateY(-50%);-o-transform: translateY(-50%);transform: translateY(-50%);}
-		.bscover {background-size: cover; background-position: center bottom;}
-		.title-text {font-size: 62px; line-height: 1.23;color: #161537; }
-		.title-text span {color: #05f;}
-		.title-text2 {font-size: 50px; font-weight: 700; line-height: 1.2;color: #161537; }
-
-		.logo {text-align: left;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center; white-space: nowrap;line-height: 45px; }
-        .logo i {font-size: 35px; margin-right: 5px; color: #10d876 !important; }
-        .logo span {font-size: 30px; color: #05f;}
-        .logo:hover i,.logo:hover {outline: none; text-decoration: none; }
-        
-		.btn {font-size: 11px; letter-spacing: 1px; font-weight: 600; }
-		.btn-lg {padding: 18px 55px; }
-		ul li a {font-weight: 600; font-size: 15px; }
-		p {line-height: 30px;  }
-		.icon-div {padding-left: 100px; position: relative; }
-		.mb80 {margin-bottom: 80px; }
-		.icon-div i {font-size: 40px; color: #132977; position: absolute; top:0px; left:20px;}
-		.icon-div h3 {font-size: 24px; margin-bottom: 15px;font-weight: 600;  }
-		.icon-div p {font-size: 13px; }
-		.demo-item {overflow: hidden;}
-		.demo-item img {width: 100%; box-shadow: 0px 40px 60px -40px rgba(0, 0, 0, 0.5);}
-		.demo-item:hover img {  -webkit-filter: blur(3px);filter: blur(3px);}
-		.demo-item .btn-wrap {top:-100px; transition: all 0.4s ease; width: 100%; left:0; position: absolute;  text-align: center; }
-		.demo-item .btn-wrap a {width: 150px; background-color: #222; color: #fff; font-size: 15px; font-weight: 600; line-height: 50px; height: 50px; display: inline-block; margin:4px; letter-spacing: 2px; border-radius: 5px; font-size: 13px; }
-		.demo-item .btn-wrap a:hover {text-decoration: none; }
-		.demo-item:hover .btn-wrap { top:33%; }
-		.demo-item span { padding: 30px 0 30px 0;text-align: center;display: block;text-decoration: none !important;font-weight: 600;color: #111;font-size: 16px;letter-spacing: 0.4px;text-decoration: none; } 
-		.demo-item a span { padding: 30px 0 30px 0;text-align: center;display: block;text-decoration: none !important;font-weight: 600;color: #111;font-size: 16px;letter-spacing: 0.4px;text-decoration: none; } 
-		.demo-item a:hover {text-decoration: none !important;}
-		.brand-wrapper {position: relative; top:-120px; }
-		.brand-wrapper img {margin-right: 20px;}
-		.brand-wrapper .col-sm-3 {display: flex;}
-		.brand-wrapper h4 {font-size: 16px; text-align: left; }
-		.brand-wrapper h4 span {font-size: 14px; font-weight: 400; margin-top: 5px; display: block;}
-		.bg-black{background-color: #111;}
-        .bg-primary {background-color: #132977;}
-        .banner-wrapper h4 {font-weight: 700; font-size: 50px; display: block; margin-bottom: 10px; margin-right: 40px; }
-        .banner-wrapper h4 span {display: block; font-size: 12px;font-weight: 600; line-height: 20px; }
-        .btn-primary {
-            color: #fff;
-            background-color: #132977;
-            border-color: #132977;
-        }
-        .scroll-tiger {color: #132977;}
-        .rounded-3 {border-radius: 15px; }
-       
-
-		.icon-scroll {position: relative;  left:15px;  }
-		.icon-scroll:before {position: absolute;right: -18px;}
-		.icon-scroll {width: 30px;height: 50px;margin-left: -20px;bottom: -100px;margin-top: -35px;box-shadow: inset 0 0 0 2px #007bff;border-radius: 25px;transition: right .5s;}
-		.icon-scroll:before {content: '';width: 6px;height: 6px;background: #007bff;margin-left: -4px;top: 8px;border-radius: 4px;-webkit-animation-duration: 1.5s;animation-duration: 1.5s;-webkit-animation-iteration-count: infinite;animation-iteration-count: infinite;-webkit-animation-name: scroll;animation-name: scroll;left: 50%;}
-		.icon-scroll:after {content: "";position: absolute;z-index: -1; width: 58px;height: 80px;border-radius: 25px;transform: translate(-10px, -10px);transition: all .3s;}
-		.nav-tabs {}
-		.nav-tabs li {padding: 0 0px; }
-		.nav-tabs li a {font-size: 12px; font-weight: 700; color: #000; border:2px #000 solid; border-radius: 30px; padding: 15px 30px; }
-		.nav-tabs li a:hover,.nav-tabs li a:focus {text-decoration: none;}
-		.nav-tabs li a.active {background-color: #000; color: #fff;}
-		.btn-primary {
-		    color: #fff;
-		    background-color: #0069d9;
-		    border-color: #0062cc;
-		}
-
-		@-webkit-keyframes scroll {0% {    opacity: 1;}100% {    opacity: 0;    -webkit-transform: translateY(35px);    transform: translateY(35px);}}
-		@keyframes scroll {0% {    opacity: 1;}100% {    opacity: 0;    -webkit-transform: translateY(35px);    transform: translateY(35px);}}
-
-		@media (min-width: 1800px) {
-			.max-container {
-			    max-width: 1600px; 
-			}
-		}
-		@media (max-width: 1500px) {
-			.title-text {font-size: 48px; margin-top: 10% !important; margin-bottom: 40px !important;}
-			.btn-lg {padding: 15px 40px;}
-			.icon-scroll {bottom: -85px; }
-            .brand-wrapper {top:-90px;}
-            .banner-wrapper h4 {font-size: 38px; }
-            .title-text2 {font-size: 45px; }
-		}
-		@media (max-width: 1300px) {
-			.icon-scroll {display: none;}
-			.bscover {background-repeat: no-repeat; background-position: center center !important;}
-		}
-		@media (max-width: 1024px) {
-			.title-text { font-size: 32px; }
-			.brand-wrapper img {max-width: 50px;height: max-content;}
-			.brand-wrapper h4 {font-size: 14px; }
-			.banner-wrapper {    background-position: top left 50% !important;  }
-		}
-		@media (max-width: 768px) {
-			.brand-wrapper {display: none;}
-			/*.banner-wrapper {    background-position: top left 30% !important;  }*/
-			.banner-wrapper h4 {font-size: 32px; margin-bottom: 0px; margin-right: 20px;  }
-			.banner-wrapper h4 span {font-size: 11px; color: #333; line-height: 16px; }
-			.col-xs-3 {width: 33.3%;}
-			.col-xs-9 {width: 66.6%;}
-			.title-text2 {font-size: 30px; }
-			.nav-tabs li {height: 50px; }
-			#mobile {display: none;}
-		}
-		@media (max-width: 480px) {
-			.banner-wrapper { background-position: top left 23% !important;  }
-			.list-inline li:last-child {margin-top: 10px; }
-			.col-xs-6 {width: 50%;}
-			.h100 {height: auto; padding-top: 100px; padding-bottom: 100px; }
-			.banner-content {position: relative; top:0;     -webkit-transform: translateY(0%);-moz-transform: translateY(0%);-ms-transform: translateY(0%);-o-transform: translateY(0%);transform: translateY(0%);}
-		}
-     </style>
-
-</head>
-
-<body class="landing">
-
-	<main>
-		<div class="header-wrapper">
-			<div class="container max-container">
-				<div class="row">
-					<div class="col-lg-3 col-md-6 col-sm-3 col-xs-6"><a href="index.html" class="logo"><i class="feather-zap text-success display2-size me-3 ms-0"></i><span class="d-inline-block fredoka-font ls-3 fw-600 text-current font-xxl logo-text mb-0">Sociala. </span> </a></div>
-					<div class="col-lg-6 col-md-6 col-sm-6 d-none d-lg-block">
-						<ul class="list-inline text-center mb-0 mt-2 pt-1">
-							<li class="list-inline-item pl-4 pr-4"><a class="scroll-tiger" href="#feature">Features</a></li>
-							<li class="list-inline-item pl-4 pr-4"><a class="scroll-tiger" href="#demo">Demo</a></li>
-							<li class="list-inline-item pl-4 pr-4"><a class="scroll-tiger" href="#contact">Contact</a></li>
-						</ul>
-
-					</div>
-					<div class="col-lg-3 col-md-6 col-sm-3 col-xs-6 text-right">
-						<a href="#" class="btn btn-lg btn-primary text-uppercase">Buy Now</a>
-					</div>
-				</div>
-			</div>
-		</div>  
-
-		<div class="banner-wrapper h100 bscover" style="background-image: url(demo/banner-bg-1.png);">
-			<div class="banner-content">
-				<div class="container max-container">
-					<div class="row">
-						<div class="col-lg-5 col-md-6 col-sm-8">
-
-							<h2 class="title-text mb-5 mt-5"><b>Set up your <span>Social</span> website with Sociala.</b></h2>
-							<h4 class="d-inline-block">40 <span>Demo <br> Websites</span></h4>
-							<h4 class="d-inline-block">12 <span>Custom <br> Widgets</span></h4>
-							<h4 class="d-inline-block">54 <span>Awesome <br> Components</span></h4>
-							<h4 class="d-inline-block">18 <span>Others <br>Inner Pages</span></h4>
-							<div class="clearfix"></div>
-							<a href="#demo" class="btn btn-lg btn-primary mr-4 text-uppercase mt-5">See DEMOs</a>
-
-
-							<div class="icon-scroll pos-bottom-center icon-white"></div>
-						</div>
-						 
-					</div>
-				</div>
-			</div>
-		</div>
-
-		 
-
-		<div class="section pb100 pt50" id="feature">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-6">
-						<img src="demo/com-1.png" alt="com" class="img-fluid">
-					</div>
-					<div class="col-lg-5 offset-lg-1">
-						<h2 class="title-text2 mb-4 mt-5"><b>Awesome Components Ready Elements and Templates.</b></h2>				<p>Sociala powers thousands of apps at some of the smartest companies around the world. Be a part of professional community.</p>
-						<a href="#demo" class="btn btn-lg btn-primary mr-4 text-uppercase mt-4">Components</a>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="section mb-5" id="mobile">
-			<div class="container max-container">
-				<div class="col-lg-12 p-5 rounded-3 bscover" style="background-image: url(demo/mobile-banner-2.png);">
-					<div class="container">
-						<div class="row">
-							<div class="col-lg-5 mt-5 mb-5">
-								<h2 class="title-text2 mb-4"><b>Mobile Optimize Design for any Device</b></h2>
-								<p>With beautifully designed custom post types to show off your works and collections.Sociala powers thousands of apps at some of the smartest companies around the world. Be a part of professional community</p>
-								<a href="#" class="btn btn-lg btn-primary mr-4 text-uppercase mt-4">See Demo</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="demo pt50 pb100" id="demo" >
-			<div class="container-fluid max-container">
-				<div class="row justify-content-center">
-					<div class="col-md-8 col-lg-6 col-xl-4 text-center">
-						<h2 class="title-text2 mb-4"><b>Choose Demo</b></h2>
-						<p class="mb-5">Create a really awesome website, choose the version that will suit your requirements in a best way.</p>
-					</div>
-					<div class="clearfix"></div>
-					
-				</div>
-				<div class="row">
-					<div class="col-lg-4 col-md-6 demo-item">
-                        
-                            <img src="demo/home.jpg" alt="demo-image" class="w-100">
-                            <span>Home</span>
-                            <div class="btn-wrap">
-								<a target="_blank" href="default.html">LTR</a>				
-								<a target="_blank" href="rtl/default.html">RTL</a>
-							</div>
-                        
-                    </div>
-                    <div class="col-lg-4 col-md-6 demo-item">
-                        
-                            <img src="demo/badge.jpg" alt="demo-image" class="w-100">
-                            <span>Badge</span>
-                            <div class="btn-wrap">
-								<a target="_blank" href="default-badge.html">LTR</a>				
-								<a target="_blank" href="rtl/default-badge.html">RTL</a>
-							</div>
-                        
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 demo-item">
-                        
-                            <img src="demo/member.jpg" alt="demo-image" class="w-100">
-                            <span>Member</span>
-                            <div class="btn-wrap">
-								<a target="_blank" href="default-member.html">LTR</a>				
-								<a target="_blank" href="rtl/default-member.html">RTL</a>
-							</div>
-                        
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 demo-item">
-                        
-                            <img src="demo/story.jpg" alt="demo-image" class="w-100">
-                            <span>Story</span>
-                            <div class="btn-wrap">
-								<a target="_blank" href="default-storie.html">LTR</a>				
-								<a target="_blank" href="rtl/default-storie.html">RTL</a>
-							</div>
-                        
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 demo-item">
-                        
-                            <img src="demo/stories.jpg" alt="demo-image" class="w-100">
-                            <span>Story Slider</span>
-                            <div class="btn-wrap">
-								<a target="_blank" href="default-stories.html">LTR</a>				
-								<a target="_blank" href="rtl/default-stories.html">RTL</a>
-							</div>
-                        
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 demo-item">
-                        
-                            <img src="demo/group.jpg" alt="demo-image" class="w-100">
-                            <span>Group</span>
-                            <div class="btn-wrap">
-								<a target="_blank" href="default-group.html">LTR</a>				
-								<a target="_blank" href="rtl/default-group.html">RTL</a>
-							</div>
-                        
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 demo-item">
-                        
-                            <img src="demo/group-page.jpg" alt="demo-image" class="w-100">
-                            <span>Group Page</span>
-                            <div class="btn-wrap">
-								<a target="_blank" href="group-page.html">LTR</a>				
-								<a target="_blank" href="rtl/group-page.html">RTL</a>
-							</div>
-                        
-                    </div>
-
-                    
-                    
-
-                    <div class="col-lg-4 col-md-6 demo-item">
-                        
-                            <img src="demo/user.jpg" alt="demo-image" class="w-100">
-                            <span>User Page</span>
-                            <div class="btn-wrap">
-								<a target="_blank" href="user-page.html">LTR</a>				
-								<a target="_blank" href="rtl/user-page.html">RTL</a>
-							</div>
-                        
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 demo-item">
-                        
-                            <img src="demo/author.jpg" alt="demo-image" class="w-100">
-                            <span>Author Page</span>
-                            <div class="btn-wrap">
-								<a target="_blank" href="author-page.html">LTR</a>				
-								<a target="_blank" href="rtl/author-page.html">RTL</a>
-							</div>
-                        
-                    </div>
 
 
                             <div class="card w-100 shadow-xss rounded-xxl border-0 p-4 mb-3">
@@ -976,7 +659,7 @@
                                     </div>
                                 </div>
                                 <div class="card-body p-0 mb-3 rounded-3 overflow-hidden">
-                                    <a href="default-video.php" class="video-btn">
+                                    <a href="default-video.html" class="video-btn">
                                         <video autoplay loop class="float-right w-100">
                                             <source src="images/v-2.mp4" type="video/mp4">
                                         </video>
@@ -1113,7 +796,7 @@
                                     <a href="#" class="ms-auto"><i class="ti-more-alt text-grey-900 btn-round-md bg-greylight font-xss"></i></a>
                                 </div>
                                 <div class="card-body p-0 mb-3 rounded-3 overflow-hidden">
-                                    <a href="default-video.php" class="video-btn">
+                                    <a href="default-video.html" class="video-btn">
                                         <video autoplay loop class="float-right w-100">
                                             <source src="images/v-1.mp4" type="video/mp4">
                                         </video>
@@ -1189,7 +872,7 @@
                             <div class="card w-100 shadow-xss rounded-xxl border-0 mb-3">
                                 <div class="card-body d-flex align-items-center p-4">
                                     <h4 class="fw-700 mb-0 font-xssss text-grey-900">Friend Request</h4>
-                                    <a href="default-member.php" class="fw-600 ms-auto font-xssss text-primary">See all</a>
+                                    <a href="default-member.html" class="fw-600 ms-auto font-xssss text-primary">See all</a>
                                 </div>
                                 <div class="card-body d-flex pt-4 ps-4 pe-4 pb-0 border-top-xs bor-0">
                                     <figure class="avatar me-3"><img src="images/user-7.png" alt="image" class="shadow-sm rounded-circle w45"></figure>
@@ -1222,7 +905,7 @@
                             <div class="card w-100 shadow-xss rounded-xxl border-0 p-0 ">
                                 <div class="card-body d-flex align-items-center p-4 mb-0">
                                     <h4 class="fw-700 mb-0 font-xssss text-grey-900">Confirm Friend</h4>
-                                    <a href="default-member.php" class="fw-600 ms-auto font-xssss text-primary">See all</a>
+                                    <a href="default-member.html" class="fw-600 ms-auto font-xssss text-primary">See all</a>
                                 </div>
                                 <div class="card-body bg-transparent-card d-flex p-3 bg-greylight ms-3 me-3 rounded-3">
                                     <figure class="avatar me-2 mb-0"><img src="images/user-7.png" alt="image" class="shadow-sm rounded-circle w45"></figure>
@@ -1245,7 +928,7 @@
                             <div class="card w-100 shadow-xss rounded-xxl border-0 mb-3 mt-3">
                                 <div class="card-body d-flex align-items-center p-4">
                                     <h4 class="fw-700 mb-0 font-xssss text-grey-900">Suggest Group</h4>
-                                    <a href="default-group.php" class="fw-600 ms-auto font-xssss text-primary">See all</a>
+                                    <a href="default-group.html" class="fw-600 ms-auto font-xssss text-primary">See all</a>
                                 </div>
                                 <div class="card-body d-flex pt-4 ps-4 pe-4 pb-0 overflow-hidden border-top-xs bor-0">
                                     <img src="images/e-2.jpg" alt="img" class="img-fluid rounded-xxl mb-2">
@@ -1268,7 +951,7 @@
                             <div class="card w-100 shadow-xss rounded-xxl border-0 mb-3">
                                 <div class="card-body d-flex align-items-center p-4">
                                     <h4 class="fw-700 mb-0 font-xssss text-grey-900">Suggest Pages</h4>
-                                    <a href="default-group.php" class="fw-600 ms-auto font-xssss text-primary">See all</a>
+                                    <a href="default-group.html" class="fw-600 ms-auto font-xssss text-primary">See all</a>
                                 </div>
                                 <div class="card-body d-flex pt-4 ps-4 pe-4 pb-0 overflow-hidden border-top-xs bor-0">
                                     <img src="images/g-2.jpg" alt="img" class="img-fluid rounded-xxl mb-2">
@@ -1291,7 +974,7 @@
                             <div class="card w-100 shadow-xss rounded-xxl border-0 mb-3">
                                 <div class="card-body d-flex align-items-center  p-4">
                                     <h4 class="fw-700 mb-0 font-xssss text-grey-900">Event</h4>
-                                    <a href="default-event.php" class="fw-600 ms-auto font-xssss text-primary">See all</a>
+                                    <a href="default-event.html" class="fw-600 ms-auto font-xssss text-primary">See all</a>
                                 </div>
                                 <div class="card-body d-flex pt-0 ps-4 pe-4 pb-3 overflow-hidden">
                                     <div class="bg-success me-2 p-3 rounded-xxl"><h4 class="fw-700 font-lg ls-3 lh-1 text-white mb-0"><span class="ls-1 d-block font-xsss text-white fw-600">FEB</span>22</h4></div>
@@ -1488,11 +1171,11 @@
         <!-- right chat -->
         
         <div class="app-footer border-0 shadow-lg bg-primary-gradiant">
-            <a href="default.php" class="nav-content-bttn nav-center"><i class="feather-home"></i></a>
-            <a href="default-video.php" class="nav-content-bttn"><i class="feather-package"></i></a>
-            <a href="default-live-stream.php" class="nav-content-bttn" data-tab="chats"><i class="feather-layout"></i></a>            
-            <a href="shop-2.php" class="nav-content-bttn"><i class="feather-layers"></i></a>
-            <a href="default-settings.php" class="nav-content-bttn"><img src="images/female-profile.png" alt="user" class="w30 shadow-xss"></a>
+            <a href="default.html" class="nav-content-bttn nav-center"><i class="feather-home"></i></a>
+            <a href="default-video.html" class="nav-content-bttn"><i class="feather-package"></i></a>
+            <a href="default-live-stream.html" class="nav-content-bttn" data-tab="chats"><i class="feather-layout"></i></a>            
+            <a href="shop-2.html" class="nav-content-bttn"><i class="feather-layers"></i></a>
+            <a href="default-settings.html" class="nav-content-bttn"><img src="images/female-profile.png" alt="user" class="w30 shadow-xss"></a>
         </div>
 
         <div class="app-header-search">
