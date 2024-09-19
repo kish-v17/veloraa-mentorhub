@@ -9,7 +9,7 @@
     <title>Sociala - Social Network App HTML Template </title>
 
     <link rel="stylesheet" href="css/themify-icons.css">
-    <link rel="stylesheet" href="css/feather.css"> -->
+    <link rel="stylesheet" href="css/feather.css">  -->
     <!-- Favicon icon -->
     <!-- <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png"> -->
     <!-- Custom Stylesheet -->
@@ -22,9 +22,9 @@
     <div class="preloader"></div>
 
     
-    <div class="main-wrapper"> -->
+    <div class="main-wrapper">
 
-        <!-- navigation top-->
+        <-- navigation top-->
         <!-- <div class="nav-header bg-white shadow-xs border-0">
             <div class="nav-top">
                 <a href="index.php"><i class="feather-zap text-success display1-size me-2 ms-0"></i><span class="d-inline-block fredoka-font ls-3 fw-600 text-current font-xxl logo-text mb-0">Sociala. </span> </a>
