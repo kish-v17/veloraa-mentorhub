@@ -377,3 +377,9 @@ function PageScroll() {
 
     });
 }
+
+document.querySelectorAll('.dropdown-menu input[type="checkbox"]').forEach(function(checkbox) {
+    checkbox.addEventListener('click', function(e) {
+        e.stopPropagation();  // Prevent closing on click
+    });
+});

@@ -1,9 +1,15 @@
 <?php
-session_start();
-$current_page = basename($_SERVER['PHP_SELF']);
-require '../database/db.php';
+    session_start();
 
+    if (!isset($_SESSION['user_id'])) {
+        header("Location: ../register.php"); 
+        // exit(); 
+    }
+
+    $current_page = basename($_SERVER['PHP_SELF']);
+    require '../database/db.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
