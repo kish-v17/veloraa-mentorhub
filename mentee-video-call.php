@@ -1,5 +1,55 @@
-<?php include('header.php'); ?>
+<?php include('header.php');
+// call.php
+session_start();
+$_SESSION['user_id']=1;
+$mentee_id = $_SESSION['user_id']; // Get mentee ID from session
+$mentor_id = $_GET['mentorId']; // Assume mentor ID is passed via GET
+error_reporting(0);
 
+
+// Check if a call record already exists for this mentor and mentee
+$stmt = $dbh->prepare("SELECT room_id FROM calls_tbl WHERE mentee_id = ? AND mentor_id = ?");
+$stmt->execute([$mentee_id, $mentor_id]);
+$existing_call = $stmt->fetch();
+
+if ($existing_call) {
+    // If a call already exists, notify the user
+    $room_id = $existing_call['room_id'];
+    // echo "A call already exists. Room ID: " . htmlspecialchars($room_id);
+} else {
+    // Generate unique room ID
+    do {
+        $room_id = 'Room-' . bin2hex(random_bytes(8)); // Generate a random room ID
+        $stmt = $dbh->prepare("SELECT * FROM calls_tbl WHERE room_id = ?");
+        $stmt->execute([$room_id]);
+    } while ($stmt->rowCount() > 0); // Retry until unique
+
+    // Insert call record into the database
+    $stmt = $dbh->prepare("INSERT INTO calls_tbl (mentee_id, mentor_id, room_id, created_at) VALUES (?, ?, ?, NOW())");
+    $stmt->execute([$mentee_id, $mentor_id, $room_id]);
+
+    // Notify the mentor (you can use email, SMS, or in-app notifications)
+    $notification_message = "Mentee has called you. Join the call: <a href='join_call.php?room_id=$room_id'>Join Call</a>";
+    // Implement your notification system here (e.g., send email or store in notifications table)
+
+    // Optionally, you can output the room ID for debugging purposes
+    // echo "Call initiated. Room ID: " . htmlspecialchars($room_id);
+}
+
+
+?>
+<script src='https://8x8.vc/vpaas-magic-cookie-c4604cec7a16490fbea68e04eefd77b4/external_api.js' async></script>
+<script type="text/javascript">
+    window.onload = () => {
+    const api = new JitsiMeetExternalAPI("8x8.vc", {
+        roomName: "vpaas-magic-cookie-c4604cec7a16490fbea68e04eefd77b4/SampleAppFinancialTrusteesRecountAccusingly",
+        parentNode: document.querySelector('#jaas-container'),
+                    // Make sure to include a JWT if you intend to record,
+                    // make outbound calls or use any other premium features!
+                    // jwt: "eyJraWQiOiJ2cGFhcy1tYWdpYy1jb29raWUtYzQ2MDRjZWM3YTE2NDkwZmJlYTY4ZTA0ZWVmZDc3YjQvYjFjZmZiLVNBTVBMRV9BUFAiLCJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJqaXRzaSIsImlzcyI6ImNoYXQiLCJpYXQiOjE3MjY4MDYyODUsImV4cCI6MTcyNjgxMzQ4NSwibmJmIjoxNzI2ODA2MjgwLCJzdWIiOiJ2cGFhcy1tYWdpYy1jb29raWUtYzQ2MDRjZWM3YTE2NDkwZmJlYTY4ZTA0ZWVmZDc3YjQiLCJjb250ZXh0Ijp7ImZlYXR1cmVzIjp7ImxpdmVzdHJlYW1pbmciOmZhbHNlLCJvdXRib3VuZC1jYWxsIjpmYWxzZSwic2lwLW91dGJvdW5kLWNhbGwiOmZhbHNlLCJ0cmFuc2NyaXB0aW9uIjpmYWxzZSwicmVjb3JkaW5nIjpmYWxzZX0sInVzZXIiOnsiaGlkZGVuLWZyb20tcmVjb3JkZXIiOmZhbHNlLCJtb2RlcmF0b3IiOnRydWUsIm5hbWUiOiJUZXN0IFVzZXIiLCJpZCI6Imdvb2dsZS1vYXV0aDJ8MTE0MzI1NTQ0MDExOTMxOTQwNzY3IiwiYXZhdGFyIjoiIiwiZW1haWwiOiJ0ZXN0LnVzZXJAY29tcGFueS5jb20ifX0sInJvb20iOiIqIn0.KcOrd2Rc-ezNTaL6G6w8x219oko2JHGxsTttZnD1hSJo7zIrN8Ebnn-RYENA1NhfAFyMfCo1Eb89zPXdsAtZL7kB6MUkY_wWhRq-u_9qpIReEkB4ypHZO7VxEF8xoHUAkRkVbHaM7yL_b5Ln4NeQTwq8mDt9bPO0XY2uDJ-EPW1QBbcVLWxPjjblOGDnLK-RtLKOMkDwq7x3sOYEZ0yhCzHUJAuiE5cxalYMIQoXe6-kIIm0broaC5jB6-aL0A-b47ol39laOB0A0GOow_e6Gq3QrgiT2HG_dMAGZ_dsggpR-jfPlLmdm9kRjbNS4TpkuupGtWdfjZzEGgpjRnq2RA"
+    });
+    }
+</script>
         <!-- main content -->
         <div class="main-content right-chat-active">
             
@@ -7,9 +57,9 @@
                 <div class="middle-sidebar-left pe-0 ms-0 me-0" style="max-width: 100%;">
                     <div class="row">
                         <div class="col-xl-8 col-xxl-9 col-lg-8">
-                            <div class="card border-0 mb-0 rounded-3 overflow-hidden chat-wrapper bg-image-center bg-image-cover" style="background-image: url(images/video-bg-1.jpg);">
-                                <div class="card-body position-absolute mt-0 ms-0 left-0">
-                                    <!-- <img src="images/video-bg-2.jpg" alt="image" class="w150 h200 rounded-3 position-relative z-index-1 shadow-xss"> -->
+                            <div class="card border-0 mb-0 rounded-3 overflow-hidden chat-wrapper bg-image-center bg-image-cover" id="jaas-container" style="background-image: url(images/video-bg-1.jpg);">
+                                <!-- <div class="card-body position-absolute mt-0 ms-0 left-0">
+                                    
                                     <video id="cameraVideo" autoplay playsinline class="w150 h200 rounded-3 position-relative z-index-1 shadow-xss"></video>
                                 </div>
                                 <div class="card-body text-center p-2 position-absolute w-100 bottom-0 bg-gradiant-bottom">
@@ -20,7 +70,7 @@
                                     <a href="#" class="btn-round-xl d-md-inline-block d-none bg-blur m-3 ms-0 z-index-1"><i class="ti-settings text-white font-md"></i></a>  
                                     <span class="p-2 bg-blur z-index-1 text-white fw-700 font-xssss rounded-3 right-15 position-absolute mb-4 bottom-0">44:00</span>    
                                     <span class="live-tag position-absolute left-15 mt-2 bottom-0 mb-4 bg-danger p-2 z-index-1 rounded-3 text-white font-xsssss text-uppersace fw-700 ls-3">LIVE</span>
-                                </div>
+                                </div> -->
                             </div>
                         </div>              
                         <div class="col-xl-4 col-xxl-3 col-lg-4 pe-0 ps-0">
