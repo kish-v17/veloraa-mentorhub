@@ -1,10 +1,8 @@
 <?php
-session_start(); // Ensure session is started
 include 'header.php';
-include '../database/db.php';
 
 $userId = $_GET['mentorId']; // Query string
-$currentUserId = $_SESSION['user_id'];
+$currentUserId = $_SESSION['user_id'];//session 
 
 // Prepare the SQL statement to fetch user data
 $stmt = $dbh->prepare("
