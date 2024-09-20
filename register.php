@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if (    $user && password_verify($password, $user['U_Pwd'])) {
+        if ($user && password_verify($password, $user['U_Pwd'])) {
             $_SESSION['user_id'] = $user['U_Id'];
             $_SESSION['user_name'] = $user['U_Fnm'];
             $_SESSION['user_role'] = $user['U_Role']; // Store user role in session
@@ -201,7 +201,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <!-- Login Form -->
                         <div id="login-form">
                             <form method="post" action="register.php">
-                                <h3 class="fw-700 display1-size display2-md-size mb-4">Login into <br>your account</h3>
+                                <h3 class="fw-700 display1-size display2-md-size mb-4">Log into <br>your account</h3>
                                 <div class="form-group icon-input mb-3">
                                     <i class="font-sm ti-email text-grey-500 pe-0"></i>
                                     <input type="email" name="email"
@@ -236,14 +236,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/custom.js"></script>
     <script>
-        document.getElementById('show-register').addEventListener('click', function () {
+        document.getElementById('show-register').addEventListener('click', function() {
             document.getElementById('register-form').style.display = 'block';
             document.getElementById('login-form').style.display = 'none';
             this.classList.add('selected');
             document.getElementById('show-login').classList.remove('selected');
         });
 
-        document.getElementById('show-login').addEventListener('click', function () {
+        document.getElementById('show-login').addEventListener('click', function() {
             document.getElementById('login-form').style.display = 'block';
             document.getElementById('register-form').style.display = 'none';
             this.classList.add('selected');

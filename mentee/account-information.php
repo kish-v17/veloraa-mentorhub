@@ -68,10 +68,46 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <div class="card-body p-lg-5 p-4 w-100 border-0 ">
                         <div class="row justify-content-center">
                             <div class="col-lg-4 text-center">
-                                <?php  ?>
+                                <?php 
+                                if (isset($_SESSION['user_id'])) {
+                                    $userId = $_SESSION['user_id'];
+
+                                    // Prepare the SQL statement to fetch user data
+                                    $stmt = $pdo->prepare("
+                                        SELECT U_Fnm, U_Phn, U_City, U_State, U_Country, U_About, U_GitHub, U_LinkedIn, U_Skill, U_Profile
+                                        FROM user_tbl
+                                        WHERE id = :userId
+                                    ");
+
+                                    // Bind parameters
+                                    $stmt->bindParam(':userId', $userId);
+
+                                    // Execute the query
+                                    $stmt->execute();
+
+                                    // Fetch the user data
+                                    $userData = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                                    if ($userData) {
+                                        $fullname = $userData['U_Fnm'];
+                                        $phone = $userData['U_Phn'];
+                                        $city = $userData['U_City'];
+                                        $state = $userData['U_State'];
+                                        $country = $userData['U_Country'];
+                                        $about = $userData['U_About'];
+                                        $githubId = $userData['U_GitHub'];
+                                        $linkedinId = $userData['U_LinkedIn'];
+                                        $skills = $userData['U_Skill'];
+                                        $profilePhoto = $userData['U_Profile'];
+
+                                        // You can now display this data in your HTML form or anywhere else
+                                    } else {
+                                        echo "<div class='alert alert-danger'>No user data found.</div>";
+                                    }
+                                } ?>
                                 <figure class="avatar ms-auto me-auto mb-0 mt-2 w100"><img src="images/pt-1.jpg" alt="image" class="shadow-sm rounded-3 w-100"></figure>
                                 <h2 class="fw-700 font-sm text-grey-900 mt-3"><?php echo "{$_SESSION['user_name']}"; ?></h2>
-                                <h4 class="text-grey-500 fw-500 mb-3 font-xsss mb-4">Brooklyn</h4>
+                                <h4 class="text-grey-500 fw-500 mb-3 font-xsss mb-4"> <?php echo $city ?></h4>
                                 <!-- <a href="#" class="p-3 alert-primary text-primary font-xsss fw-500 mt-2 rounded-3">Upload New Photo</a> -->
                             </div>
                         </div>
