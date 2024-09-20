@@ -1,6 +1,7 @@
 <?php
 $current_page = basename($_SERVER['PHP_SELF']);
-require 'database/db.php'
+session_start();
+require 'database/db.php';
 
 ?>
 <!DOCTYPE html>
@@ -27,7 +28,7 @@ require 'database/db.php'
 
 <body class="color-theme-blue mont-font">
 
-    <!-- <div class="preloader"></div> -->
+    <div class="preloader"></div>
 
 
     <div class="main-wrapper">
