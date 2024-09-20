@@ -1,13 +1,13 @@
 <?php
-    session_start();
+session_start();
 
-    if (!isset($_SESSION['user_id'])) {
-        header("Location: ../index.php"); 
-        // exit(); 
-    }
+if (!isset($_SESSION['user_id'])) {
+    header("Location: ../index.php");
+    // exit(); 
+}
 
-    $current_page = basename($_SERVER['PHP_SELF']);
-    require '../database/db.php';
+$current_page = basename($_SERVER['PHP_SELF']);
+require '../database/db.php';
 ?>
 
 <!DOCTYPE html>
@@ -75,8 +75,6 @@
             <a href="shop-2.php" class="p-2 text-center ms-0 menu-icon center-menu-icon <?php echo ($current_page == 'shop-2.php') ? 'active' : ''; ?>">
                 <i class="feather-shopping-bag font-lg bg-greylight btn-round-lg theme-dark-bg <?php echo ($current_page == 'shop-2.php') ? 'text-current' : 'text-grey-500'; ?>"></i>
             </a>
-
-
 
             <a href="#" class="p-2 text-center ms-auto menu-icon" id="dropdownMenu3" data-bs-toggle="dropdown" aria-expanded="false"><span class="dot-count bg-warning"></span><i class="feather-bell font-xl text-current"></i></a>
             <div class="dropdown-menu dropdown-menu-end p-4 rounded-3 border-0 shadow-lg" aria-labelledby="dropdownMenu3">
