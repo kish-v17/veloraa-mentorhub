@@ -24,8 +24,7 @@
                                 // Call the function to display mentors
                                 displayMentors($dbh);
                                 ?>
-                                
-                                ?>
+                            
                                 <div class="col-md-12 pe-2 ps-2">
                                     <div class="card w-100 text-center shadow-xss rounded-xxl border-0 p-4 mb-3 mt-0">
                                         <div class="snippet mt-2 ms-auto me-auto" data-title=".dot-typing">
@@ -335,7 +334,7 @@
                         <h4 class="fw-700 font-xsss mt-3 mb-1">' . $name . '</h4>
                         <p class="fw-500 font-xsssss text-grey-500 mt-0 mb-3">' . $email . '</p>
                         <span class="position-absolute right-15 top-0 d-flex align-items-center">
-                            <a href="mentee-video-call.php?mentorId='.$uid.'" class="d-lg-block d-none"><i class="feather-video btn-round-md font-md bg-primary-gradiant text-white"></i></a>
+                            <a href="mentor-profile.php?mentorId='.$uid.'" class="d-lg-block d-none"><i class="feather-video btn-round-md font-md bg-primary-gradiant text-white"></i></a>
                             <a href="#" class="text-center p-2 lh-24 w100 ms-1 ls-3 d-inline-block rounded-xl bg-current font-xsssss fw-700 ls-lg text-white">FOLLOW</a>
                         </span>
                     </div>

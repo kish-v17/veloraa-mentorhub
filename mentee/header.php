@@ -68,8 +68,8 @@
                 <i class="feather-video font-lg bg-greylight btn-round-lg theme-dark-bg <?php echo ($current_page == 'default-video.php') ? 'text-current' : 'text-grey-500'; ?>"></i>
             </a>
 
-            <a href="default-group.php" class="p-2 text-center ms-0 menu-icon center-menu-icon <?php echo ($current_page == 'default-group.php') ? 'active' : ''; ?>">
-                <i class="feather-user font-lg bg-greylight btn-round-lg theme-dark-bg <?php echo ($current_page == 'default-group.php') ? 'text-current' : 'text-grey-500'; ?>"></i>
+            <a href="mentee-mentors.php" class="p-2 text-center ms-0 menu-icon center-menu-icon <?php echo ($current_page == 'mentee-mentors.php') ? 'active' : ''; ?>">
+                <i class="feather-user font-lg bg-greylight btn-round-lg theme-dark-bg <?php echo ($current_page == 'mentee-mentors.php') ? 'text-current' : 'text-grey-500'; ?>"></i>
             </a>
 
             <a href="shop-2.php" class="p-2 text-center ms-0 menu-icon center-menu-icon <?php echo ($current_page == 'shop-2.php') ? 'active' : ''; ?>">
