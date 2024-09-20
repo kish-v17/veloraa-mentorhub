@@ -55,7 +55,7 @@ if ($existing_call) {
             <div class="middle-sidebar-bottom">
                 <div class="middle-sidebar-left pe-0 ms-0 me-0" style="max-width: 100%;">
                     <div class="row">
-                        <div class="col">
+                        <div class="col" height="100%">
                             <div class="card border-0 mb-0 rounded-3 overflow-hidden chat-wrapper bg-image-center bg-image-cover" id="jaas-container" style="background-image: url(images/video-bg-1.jpg);">
                                 <!-- <div class="card-body position-absolute mt-0 ms-0 left-0">
                                     

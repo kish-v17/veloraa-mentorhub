@@ -5,7 +5,7 @@
 <script type="text/javascript">
     window.onload = () => {
     const api = new JitsiMeetExternalAPI("8x8.vc", {
-        roomName: "vpaas-magic-cookie-c4604cec7a16490fbea68e04eefd77b4/<?php echo $_GET['room_id']; ?>",
+        roomName: "vpaas-magic-cookie-c4604cec7a16490fbea68e04eefd77b4/SampleAppFinancialTrusteesRecountAccusingly",
         parentNode: document.querySelector('#jaas-container'),
                     // Make sure to include a JWT if you intend to record,
                     // make outbound calls or use any other premium features!
@@ -18,8 +18,8 @@
             
             <div class="middle-sidebar-bottom">
                 <div class="middle-sidebar-left pe-0 ms-0 me-0" style="max-width: 100%;">
-                    <div class="row">
-                        <div class="col">
+                    <div class="row" >
+                        <div class="col" >
                             <div class="card border-0 mb-0 rounded-3 overflow-hidden chat-wrapper bg-image-center bg-image-cover" id="jaas-container" style="background-image: url(images/video-bg-1.jpg);">
                                 <!-- <div class="card-body position-absolute mt-0 ms-0 left-0">
                                     
