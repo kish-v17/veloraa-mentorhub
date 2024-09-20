@@ -1,44 +1,144 @@
-<?php include('./header.php'); ?>
+<?php include('header.php');
+// call.php
+session_start();
+?>
+<script src='https://8x8.vc/vpaas-magic-cookie-c4604cec7a16490fbea68e04eefd77b4/external_api.js' async></script>
+<script type="text/javascript">
+    window.onload = () => {
+    const api = new JitsiMeetExternalAPI("8x8.vc", {
+        roomName: "vpaas-magic-cookie-c4604cec7a16490fbea68e04eefd77b4/<?php echo $_GET['room_id']; ?>",
+        parentNode: document.querySelector('#jaas-container'),
+                    // Make sure to include a JWT if you intend to record,
+                    // make outbound calls or use any other premium features!
+                    // jwt: "eyJraWQiOiJ2cGFhcy1tYWdpYy1jb29raWUtYzQ2MDRjZWM3YTE2NDkwZmJlYTY4ZTA0ZWVmZDc3YjQvYjFjZmZiLVNBTVBMRV9BUFAiLCJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJqaXRzaSIsImlzcyI6ImNoYXQiLCJpYXQiOjE3MjY4MDYyODUsImV4cCI6MTcyNjgxMzQ4NSwibmJmIjoxNzI2ODA2MjgwLCJzdWIiOiJ2cGFhcy1tYWdpYy1jb29raWUtYzQ2MDRjZWM3YTE2NDkwZmJlYTY4ZTA0ZWVmZDc3YjQiLCJjb250ZXh0Ijp7ImZlYXR1cmVzIjp7ImxpdmVzdHJlYW1pbmciOmZhbHNlLCJvdXRib3VuZC1jYWxsIjpmYWxzZSwic2lwLW91dGJvdW5kLWNhbGwiOmZhbHNlLCJ0cmFuc2NyaXB0aW9uIjpmYWxzZSwicmVjb3JkaW5nIjpmYWxzZX0sInVzZXIiOnsiaGlkZGVuLWZyb20tcmVjb3JkZXIiOmZhbHNlLCJtb2RlcmF0b3IiOnRydWUsIm5hbWUiOiJUZXN0IFVzZXIiLCJpZCI6Imdvb2dsZS1vYXV0aDJ8MTE0MzI1NTQ0MDExOTMxOTQwNzY3IiwiYXZhdGFyIjoiIiwiZW1haWwiOiJ0ZXN0LnVzZXJAY29tcGFueS5jb20ifX0sInJvb20iOiIqIn0.KcOrd2Rc-ezNTaL6G6w8x219oko2JHGxsTttZnD1hSJo7zIrN8Ebnn-RYENA1NhfAFyMfCo1Eb89zPXdsAtZL7kB6MUkY_wWhRq-u_9qpIReEkB4ypHZO7VxEF8xoHUAkRkVbHaM7yL_b5Ln4NeQTwq8mDt9bPO0XY2uDJ-EPW1QBbcVLWxPjjblOGDnLK-RtLKOMkDwq7x3sOYEZ0yhCzHUJAuiE5cxalYMIQoXe6-kIIm0broaC5jB6-aL0A-b47ol39laOB0A0GOow_e6Gq3QrgiT2HG_dMAGZ_dsggpR-jfPlLmdm9kRjbNS4TpkuupGtWdfjZzEGgpjRnq2RA"
+    });
+    }
+</script>
         <!-- main content -->
         <div class="main-content right-chat-active">
             
             <div class="middle-sidebar-bottom">
-                <div class="middle-sidebar-left pe-0">
+                <div class="middle-sidebar-left pe-0 ms-0 me-0" style="max-width: 100%;">
                     <div class="row">
-                        <div class="col-xl-12">
-                            <div class="card shadow-xss w-100 d-block d-flex border-0 p-4 mb-3">
-                                <div class="card-body d-flex align-items-center p-0">
-                                    <h2 class="fw-700 mb-0 mt-0 font-md text-grey-900">Group</h2>
-                                    <div class="search-form-2 ms-auto">
-                                        <i class="ti-search font-xss"></i>
-                                        <input type="text" class="form-control text-grey-500 mb-0 bg-greylight theme-dark-bg border-0" placeholder="Search here.">
-                                    </div>
-                                    <a href="#" class="btn-round-md ms-2 bg-greylight theme-dark-bg rounded-3"><i class="feather-filter font-xss text-grey-500"></i></a>
+                        <div class="col-xl-8 col-xxl-9 col-lg-8">
+                            <div class="card border-0 mb-0 rounded-3 overflow-hidden chat-wrapper bg-image-center bg-image-cover" id="jaas-container" style="background-image: url(images/video-bg-1.jpg);">
+                                <!-- <div class="card-body position-absolute mt-0 ms-0 left-0">
+                                    
+                                    <video id="cameraVideo" autoplay playsinline class="w150 h200 rounded-3 position-relative z-index-1 shadow-xss"></video>
                                 </div>
+                                <div class="card-body text-center p-2 position-absolute w-100 bottom-0 bg-gradiant-bottom">
+                                    <a href="#" class="btn-round-xl d-md-inline-block d-none bg-blur m-3 me-0 z-index-1"><i class="feather-grid text-white font-md"></i></a>
+                                    <a href="#" class="btn-round-xl d-md-inline-block d-none bg-blur m-3 z-index-1"><i class="feather-mic-off text-white font-md"></i></a>       
+                                    <a href="#" class="btn-round-xxl bg-danger z-index-1"><i class="feather-phone-off text-white font-md"></i></a>   
+                                    <a href="#" class="btn-round-xl d-md-inline-block d-none bg-blur m-3 z-index-1"><i class="ti-video-camera text-white font-md"></i></a>   
+                                    <a href="#" class="btn-round-xl d-md-inline-block d-none bg-blur m-3 ms-0 z-index-1"><i class="ti-settings text-white font-md"></i></a>  
+                                    <span class="p-2 bg-blur z-index-1 text-white fw-700 font-xssss rounded-3 right-15 position-absolute mb-4 bottom-0">44:00</span>    
+                                    <span class="live-tag position-absolute left-15 mt-2 bottom-0 mb-4 bg-danger p-2 z-index-1 rounded-3 text-white font-xsssss text-uppersace fw-700 ls-3">LIVE</span>
+                                </div> -->
                             </div>
-
-                            <div class="row ps-2 pe-1">
-
-                                <?php 
-                                
-                                // Call the function to display mentors
-                                displayMentors($dbh);
-                                ?>
-                            
-                                <div class="col-md-12 pe-2 ps-2">
-                                    <div class="card w-100 text-center shadow-xss rounded-xxl border-0 p-4 mb-3 mt-0">
-                                        <div class="snippet mt-2 ms-auto me-auto" data-title=".dot-typing">
-                                            <div class="stage">
-                                                <div class="dot-typing"></div>
+                        </div>              
+                        <div class="col-xl-4 col-xxl-3 col-lg-4 pe-0 ps-0">
+                            <div class="card w-100 d-block chat-body p-0 border-0 shadow-xss rounded-3 mb-3 position-relative">
+                                <div class="messages-content chat-wrapper scroll-bar p-3">
+                                    <div class="message-item">
+                                        <div class="message-user">
+                                            <figure class="avatar">
+                                                <img src="images/user-9.png" alt="image">
+                                            </figure>
+                                            <div>
+                                                <h5 class="font-xssss mt-2">Byrom Guittet</h5>
+                                                <div class="time">01:35 PM</div>
                                             </div>
                                         </div>
+                                        <div class="message-wrap shadow-none">I'm fine, how are you ðŸ˜ƒ</div>
                                     </div>
-                                </div>
-                                 
 
-                                 
+                                    <div class="message-item">
+                                        <div class="message-user">
+                                            <figure class="avatar">
+                                                <img src="images/user-1.png" alt="image">
+                                            </figure>
+                                            <div>
+                                                <h5 class="font-xssss mt-2">Byrom Guittet</h5>
+                                                <div class="time">01:35 PM<i class="ti-double-check text-info"></i></div>
+                                            </div>
+                                        </div>
+                                        <div class="message-wrap shadow-none">I want those files for you. I want you to send 1 PDF and 1 image file.</div>
+                                    </div>
+
+                                    <div class="message-item">
+                                        <div class="message-user">
+                                            <figure class="avatar">
+                                                <img src="images/user-9.png" alt="image">
+                                            </figure>
+                                            <div>
+                                                <h5 class="font-xssss mt-2">Byrom Guittet</h5>
+                                                <div class="time">01:35 PM</div>
+                                            </div>
+                                        </div>
+                                        <div class="message-wrap shadow-none">I've found some cool photos for our travel app.</div>
+                                    </div>
+
+                                    <div class="message-item outgoing-message">
+                                        <div class="message-user">
+                                            <figure class="avatar">
+                                                <img src="images/user-1.png" alt="image">
+                                            </figure>
+                                            <div>
+                                                <h5>You</h5>
+                                                <div class="time">01:35 PM<i class="ti-double-check text-info"></i></div>
+                                            </div>
+                                        </div>
+                                        <div class="message-wrap">Hey mate! How are things going ?</div>
+                                    </div>
+
+                                    <div class="message-item">
+                                        <div class="message-user">
+                                            <figure class="avatar">
+                                                <img src="images/user-9.png" alt="image">
+                                            </figure>
+                                            <div>
+                                                <h5 class="font-xssss mt-2">Byrom Guittet</h5>
+                                                <div class="time">01:35 PM</div>
+                                            </div>
+                                        </div>
+                                        <div class="message-wrap shadow-none">I'm fine, how are you ðŸ˜ƒ</div>
+                                    </div>
+
+                                    <div class="message-item">
+                                        <div class="message-user">
+                                            <figure class="avatar">
+                                                <img src="images/user-1.png" alt="image">
+                                            </figure>
+                                            <div>
+                                                <h5 class="font-xssss mt-2">Byrom Guittet</h5>
+                                                <div class="time">01:35 PM<i class="ti-double-check text-info"></i></div>
+                                            </div>
+                                        </div>
+                                        <div class="message-wrap shadow-none">I want those files for you. I want you to send 1 PDF and 1 image file.</div>
+                                    </div>
+
+                                    <div class="message-item">
+                                        <div class="message-user">
+                                            <figure class="avatar">
+                                                <img src="images/user-9.png" alt="image">
+                                            </figure>
+                                            <div>
+                                                <h5 class="font-xssss mt-2">Byrom Guittet</h5>
+                                                <div class="time">01:35 PM</div>
+                                            </div>
+                                        </div>
+                                        <div class="message-wrap shadow-none">I've found some cool photos for our travel app.</div>
+                                    </div>
+
+                                </div>
+                                <form class="chat-form position-absolute bottom-0 w-100 left-0 bg-white z-index-1 p-3 shadow-xs theme-dark-bg ">
+                                    <button class="bg-grey float-left"><i class="ti-microphone text-white"></i></button>
+                                    <div class="form-group"><input type="text" placeholder="Start typing.." class="pos-top text-grey-900"></div>          
+                                    <button class="bg-current"><i class="ti-arrow-right text-white"></i></button>
+                                </form>
                             </div>
-                        </div>               
+                        </div>
                     </div>
                 </div>
                  
@@ -291,55 +391,8 @@
 
     <script src="js/plugin.js"></script>
     <script src="js/scripts.js"></script>
-    
+    <script src="js/video-player.js"></script>
     
 </body>
 
 </html>
-
-
-<?php
-    
-    // Function to fetch mentors from the database and display them
-    function displayMentors($dbh) {
-    
-        // Prepare and execute the SQL statement
-        $stmt = $dbh->prepare("SELECT * FROM user_tbl");
-        $stmt->execute();
-    
-        // Fetch all mentors
-        $mentors = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
-        // Initialize the output variable
-        $output = '';
-    
-        // Loop through each mentor and build the HTML
-        foreach ($mentors as $mentor) {
-            $uid = htmlspecialchars($mentor['U_Id']);
-            $name = htmlspecialchars($mentor['U_Fnm']);
-            $email = htmlspecialchars($mentor['U_Email']);
-            $profileImage = !empty($mentor['U_Profile']) ? htmlspecialchars($mentor['U_Profile']) : 'images/user-25.png';
-            $backgroundImage = !empty($mentor['U_Background']) ? htmlspecialchars($mentor['U_Background']) : 'images/poster-1.png';
-    
-    
-            echo '
-            <div class="col-md-6 col-sm-6 pe-2 ps-2">
-                <div class="card d-block border-0 shadow-xss rounded-3 overflow-hidden mb-3">
-                    <div class="card-body position-relative h100 bg-image-cover bg-image-center" style="background-image: url(' . $backgroundImage . ');"></div>
-                    <div class="card-body d-block w-100 pl-10 pe-4 pb-4 pt-0 text-left position-relative">
-                        <figure class="avatar position-absolute w75 z-index-1" style="top:-40px; left: 15px;">
-                            <img src="' . $profileImage . '" alt="image" class="float-right p-1 bg-white rounded-circle w-100">
-                        </figure>
-                        <div class="clearfix"></div>
-                        <h4 class="fw-700 font-xsss mt-3 mb-1">' . $name . '</h4>
-                        <p class="fw-500 font-xsssss text-grey-500 mt-0 mb-3">' . $email . '</p>
-                        <span class="position-absolute right-15 top-0 d-flex align-items-center">
-                            <a href="mentee-video-call.php?mentorId='.$uid.'" class="d-lg-block d-none"><i class="feather-video btn-round-md font-md bg-primary-gradiant text-white"></i></a>
-                            <a href="#" class="text-center p-2 lh-24 w100 ms-1 ls-3 d-inline-block rounded-xl bg-current font-xsssss fw-700 ls-lg text-white">FOLLOW</a>
-                        </span>
-                    </div>
-                </div>
-            </div>';
-        }
-
-    }
