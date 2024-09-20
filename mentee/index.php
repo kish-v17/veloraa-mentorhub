@@ -5,7 +5,7 @@
             <div class="middle-sidebar-bottom">
                 <div class="middle-sidebar-left">
                     <!-- loader wrapper -->
-                    <div class="preloader-wrap p-3">
+                    <!-- <div class="preloader-wrap p-3">
                         <div class="box shimmer">
                             <div class="lines">
                                 <div class="line s_shimmer"></div>
@@ -30,7 +30,7 @@
                                 <div class="line s_shimmer"></div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- loader wrapper -->
                     <div class="row feed-body">
                         <div class="col-xl-8 col-xxl-9 col-lg-8">

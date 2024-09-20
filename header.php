@@ -28,7 +28,7 @@ require 'database/db.php';
 
 <body class="color-theme-blue mont-font">
 
-    <div class="preloader"></div>
+    <!-- <div class="preloader"></div> -->
 
 
     <div class="main-wrapper">
