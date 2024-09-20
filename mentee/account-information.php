@@ -65,47 +65,40 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <a href="default-settings.php" class="d-inline-block mt-2"><i class="ti-arrow-left font-sm text-white"></i></a>
                         <h4 class="font-xs text-white fw-600 ms-4 mb-0 mt-2">Account Details</h4>
                     </div>
+
+                    <?php
+                    if (isset($_SESSION['user_id'])) {
+                        $userId = $_SESSION['user_id'];
+
+                        $stmt = $dbh->prepare("
+                                        SELECT U_Fnm, U_Phn, U_City, U_State, U_Country, U_About, U_GitHub, U_LinkedIn, U_Skill, U_Profile
+                                        FROM user_tbl
+                                        WHERE U_Id = :userId
+                                    ");
+
+                        $stmt->bindParam(':userId', $userId);
+                        $stmt->execute();
+                        $userData = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                        if ($userData) {
+                            $fullname = $userData['U_Fnm'];
+                            $phone = $userData['U_Phn'];
+                            $city = $userData['U_City'];
+                            $state = $userData['U_State'];
+                            $country = $userData['U_Country'];
+                            $about = $userData['U_About'];
+                            $githubId = $userData['U_GitHub'];
+                            $linkedinId = $userData['U_LinkedIn'];
+                            $skills = $userData['U_Skill'];
+                            $profilePhoto = $userData['U_Profile'];
+                        } else {
+                            echo "<div class='alert alert-danger'>No user data found.</div>";
+                        }
+                    } ?>
                     <div class="card-body p-lg-5 p-4 w-100 border-0 ">
                         <div class="row justify-content-center">
                             <div class="col-lg-4 text-center">
-                                <?php 
-                                if (isset($_SESSION['user_id'])) {
-                                    $userId = $_SESSION['user_id'];
-
-                                    // Prepare the SQL statement to fetch user data
-                                    $stmt = $pdo->prepare("
-                                        SELECT U_Fnm, U_Phn, U_City, U_State, U_Country, U_About, U_GitHub, U_LinkedIn, U_Skill, U_Profile
-                                        FROM user_tbl
-                                        WHERE id = :userId
-                                    ");
-
-                                    // Bind parameters
-                                    $stmt->bindParam(':userId', $userId);
-
-                                    // Execute the query
-                                    $stmt->execute();
-
-                                    // Fetch the user data
-                                    $userData = $stmt->fetch(PDO::FETCH_ASSOC);
-
-                                    if ($userData) {
-                                        $fullname = $userData['U_Fnm'];
-                                        $phone = $userData['U_Phn'];
-                                        $city = $userData['U_City'];
-                                        $state = $userData['U_State'];
-                                        $country = $userData['U_Country'];
-                                        $about = $userData['U_About'];
-                                        $githubId = $userData['U_GitHub'];
-                                        $linkedinId = $userData['U_LinkedIn'];
-                                        $skills = $userData['U_Skill'];
-                                        $profilePhoto = $userData['U_Profile'];
-
-                                        // You can now display this data in your HTML form or anywhere else
-                                    } else {
-                                        echo "<div class='alert alert-danger'>No user data found.</div>";
-                                    }
-                                } ?>
-                                <figure class="avatar ms-auto me-auto mb-0 mt-2 w100"><img src="images/pt-1.jpg" alt="image" class="shadow-sm rounded-3 w-100"></figure>
+                                <figure class="avatar ms-auto me-auto mb-0 mt-2 w100"><img src="<?php echo '.$profilePhoto.'; ?>" alt="image" class="shadow-sm rounded-3 w-100"></figure>
                                 <h2 class="fw-700 font-sm text-grey-900 mt-3"><?php echo "{$_SESSION['user_name']}"; ?></h2>
                                 <h4 class="text-grey-500 fw-500 mb-3 font-xsss mb-4"> <?php echo $city ?></h4>
                                 <!-- <a href="#" class="p-3 alert-primary text-primary font-xsss fw-500 mt-2 rounded-3">Upload New Photo</a> -->
@@ -186,17 +179,80 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <div class="col-lg-6 mb-3">
                                     <div class="form-group">
                                         <label class="mont-font fw-600 font-xsss">Skills</label>
-                                        <select class="form-control" name="skill[]" multiple>
-                                            <option value="">--Select Skills--</option>
-                                            <option value="c">C</option>
-                                            <option value="cpp">C++</option>
-                                            <option value="java">Java</option>
-                                            <option value="asp.net">ASP.net</option>
-                                            <option value="php">PHP</option>
-                                        </select>
+                                        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#skillsModal">
+                                            Select Skills
+                                        </button>
                                     </div>
                                 </div>
                             </div>
+
+
+
+
+
+
+
+
+
+                            <!-- Skills Modal -->
+                            <div class="modal fade" id="skillsModal" tabindex="-1" aria-labelledby="skillsModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="skillsModalLabel">Select Skills</h5>
+                                            <button type="button" data-bs-target="#Modalstory" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <!-- <div class="modal-body">
+                                            <input type="text" id="skillsSearch" class="form-control mb-3" placeholder="Search for skills...">
+                                            <div id="skillsList">
+                                                <label class="form-check">
+                                                    <input type="checkbox" name="skill[]" value="c" <?php echo in_array('c', explode(',', $skills)) ? 'checked' : ''; ?>> C
+                                                </label>
+                                                <label class="form-check">
+                                                    <input type="checkbox" name="skill[]" value="cpp" <?php echo in_array('cpp', explode(',', $skills)) ? 'checked' : ''; ?>> C++
+                                                </label>
+                                                <label class="form-check">
+                                                    <input type="checkbox" name="skill[]" value="java" <?php echo in_array('java', explode(',', $skills)) ? 'checked' : ''; ?>> Java
+                                                </label>
+                                                <label class="form-check">
+                                                    <input type="checkbox" name="skill[]" value="asp.net" <?php echo in_array('asp.net', explode(',', $skills)) ? 'checked' : ''; ?>> ASP.net
+                                                </label>
+                                                <label class="form-check">
+                                                    <input type="checkbox" name="skill[]" value="php" <?php echo in_array('php', explode(',', $skills)) ? 'checked' : ''; ?>> PHP
+                                                </label>
+                                            </div>
+                                        </div> -->
+
+                                        <div class="modal bottom side fade" id="Modalstory" tabindex="-1" role="dialog" style=" overflow-y: auto;">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content border-0 bg-transparent">
+                                                    <button type="button" class="close mt-0 position-absolute top--30 right--10" data-dismiss="modal" aria-label="Close"><i class="ti-close text-grey-900 font-xssss"></i></button>
+                                                    <div class="modal-body p-0">
+                                                        <div class="card w-100 border-0 rounded-3 overflow-hidden bg-gradiant-bottom bg-gradiant-top">
+                                                            <div class="owl-carousel owl-theme dot-style3 story-slider owl-dot-nav nav-none">
+                                                                <div class="item"><img src="images/story-5.jpg" alt="image"></div>
+                                                                <div class="item"><img src="images/story-6.jpg" alt="image"></div>
+                                                                <div class="item"><img src="images/story-7.jpg" alt="image"></div>
+                                                                <div class="item"><img src="images/story-8.jpg" alt="image"></div>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group mt-3 mb-0 p-3 position-absolute bottom-0 z-index-1 w-100">
+                                                            <input type="text" class="style2-input w-100 bg-transparent border-light-md p-3 pe-5 font-xssss fw-500 text-white" value="Write Comments">
+                                                            <span class="feather-send text-white font-md text-white position-absolute" style="bottom: 35px;right:30px;"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary" onclick="saveSkills()">Save Skills</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
 
 
                             <div class="col-lg-12 mb-3">
