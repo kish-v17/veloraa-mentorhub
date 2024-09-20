@@ -67,21 +67,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
 
                     <?php
+                    require '../database/db.php'; // Ensure you include your database connection
+                    // error_reporting(0);
                     if (isset($_SESSION['user_id'])) {
                         $userId = $_SESSION['user_id'];
 
+                        // Fetch user data
                         $stmt = $dbh->prepare("
-                                        SELECT U_Fnm, U_Phn, U_City, U_State, U_Country, U_About, U_GitHub, U_LinkedIn, U_Skill, U_Profile
-                                        FROM user_tbl
-                                        WHERE U_Id = :userId
-                                    ");
+                            SELECT U_Fnm, U_Phn, U_City, U_State, U_Country, U_About, U_GitHub, U_LinkedIn, U_Skill, U_Profile
+                            FROM user_tbl
+                            WHERE U_Id = :userId
+                        ");
 
                         $stmt->bindParam(':userId', $userId);
                         $stmt->execute();
                         $userData = $stmt->fetch(PDO::FETCH_ASSOC);
 
                         if ($userData) {
+                            // Store user data in variables
                             $fullname = $userData['U_Fnm'];
+                            $email = $userData['U_Email'];
                             $phone = $userData['U_Phn'];
                             $city = $userData['U_City'];
                             $state = $userData['U_State'];
@@ -94,30 +99,35 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         } else {
                             echo "<div class='alert alert-danger'>No user data found.</div>";
                         }
-                    } ?>
-                    <div class="card-body p-lg-5 p-4 w-100 border-0 ">
+                    } else {
+                        echo "<div class='alert alert-danger'>User is not logged in.</div>";
+                    }
+                    ?>
+
+                    <div class="card-body p-lg-5 p-4 w-100 border-0">
                         <div class="row justify-content-center">
                             <div class="col-lg-4 text-center">
-                                <figure class="avatar ms-auto me-auto mb-0 mt-2 w100"><img src="<?php echo '.$profilePhoto.'; ?>" alt="image" class="shadow-sm rounded-3 w-100"></figure>
-                                <h2 class="fw-700 font-sm text-grey-900 mt-3"><?php echo "{$_SESSION['user_name']}"; ?></h2>
-                                <h4 class="text-grey-500 fw-500 mb-3 font-xsss mb-4"> <?php echo $city ?></h4>
-                                <!-- <a href="#" class="p-3 alert-primary text-primary font-xsss fw-500 mt-2 rounded-3">Upload New Photo</a> -->
+                                <figure class="avatar ms-auto me-auto mb-0 mt-2 w100">
+                                    <img src="<?php echo htmlspecialchars($profilePhoto); ?>" alt="image" class="shadow-sm rounded-3 w-100">
+                                </figure>
+                                <h2 class="fw-700 font-sm text-grey-900 mt-3"><?php echo htmlspecialchars($_SESSION['user_name']); ?></h2>
+                                <h4 class="text-grey-500 fw-500 mb-3 font-xsss mb-4"><?php echo htmlspecialchars($city); ?></h4>
                             </div>
                         </div>
 
-                        <form action="#">
+                        <form action="update_profile.php" method="POST" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col-lg-6 mb-3">
                                     <div class="form-group">
                                         <label class="mont-font fw-600 font-xsss">Full Name</label>
-                                        <input type="text" class="form-control" name="fullname">
+                                        <input type="text" class="form-control" name="fullname" value="<?php echo htmlspecialchars($fullname); ?>" required>
                                     </div>
                                 </div>
 
                                 <div class="col-lg-6 mb-3">
                                     <div class="form-group">
                                         <label class="mont-font fw-600 font-xsss">Email</label>
-                                        <input type="text" class="form-control" name="email" value="hello@gmail.com" readonly>
+                                        <input type="email" class="form-control" name="email" value="<?php echo htmlspecialchars($email); ?>" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -126,14 +136,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <div class="col-lg-6 mb-3">
                                     <div class="form-group">
                                         <label class="mont-font fw-600 font-xsss">Phone</label>
-                                        <input type="text" class="form-control" name="phone">
+                                        <input type="text" class="form-control" name="phone" value="<?php echo htmlspecialchars($phone); ?>" required>
                                     </div>
                                 </div>
 
                                 <div class="col-lg-6 mb-3">
                                     <div class="form-group">
                                         <label class="mont-font fw-600 font-xsss">City</label>
-                                        <input type="text" class="form-control" name="city">
+                                        <input type="text" class="form-control" name="city" value="<?php echo htmlspecialchars($city); ?>" required>
                                     </div>
                                 </div>
                             </div>
@@ -142,13 +152,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <div class="col-lg-6 mb-3">
                                     <div class="form-group">
                                         <label class="mont-font fw-600 font-xsss">State</label>
-                                        <input type="text" class="form-control" name="state">
+                                        <input type="text" class="form-control" name="state" value="<?php echo htmlspecialchars($state); ?>" required>
                                     </div>
                                 </div>
+
                                 <div class="col-lg-6 mb-3">
                                     <div class="form-group">
                                         <label class="mont-font fw-600 font-xsss">Country</label>
-                                        <input type="text" class="form-control" name="country">
+                                        <input type="text" class="form-control" name="country" value="<?php echo htmlspecialchars($country); ?>" required>
                                     </div>
                                 </div>
                             </div>
@@ -156,7 +167,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <div class="row">
                                 <div class="col-lg-12 mb-3">
                                     <label class="mont-font fw-600 font-xsss">About</label>
-                                    <textarea class="form-control mb-0 p-3 h100 lh-16" rows="5" name="about" placeholder="Write your message..." spellcheck="false"></textarea>
+                                    <textarea class="form-control mb-0 p-3 h100 lh-16" rows="5" name="about" placeholder="Write about yourself..." required><?php echo htmlspecialchars($about); ?></textarea>
                                 </div>
                             </div>
 
@@ -164,13 +175,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <div class="col-lg-6 mb-3">
                                     <div class="form-group">
                                         <label class="mont-font fw-600 font-xsss">Github Id</label>
-                                        <input type="text" class="form-control" name="githubId">
+                                        <input type="text" class="form-control" name="githubId" value="<?php echo htmlspecialchars($githubId); ?>">
                                     </div>
                                 </div>
                                 <div class="col-lg-6 mb-3">
                                     <div class="form-group">
-                                        <label class="mont-font fw-600 font-xsss">Linked Id</label>
-                                        <input type="text" class="form-control" name="linkedinId">
+                                        <label class="mont-font fw-600 font-xsss">LinkedIn Id</label>
+                                        <input type="text" class="form-control" name="linkedinId" value="<?php echo htmlspecialchars($linkedinId); ?>">
                                     </div>
                                 </div>
                             </div>
@@ -185,7 +196,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                     </div>
                                 </div>
                             </div>
-                            
 
                             <!-- Skills Modal -->
                             <div class="modal fade" id="skillsModal" tabindex="-1" aria-labelledby="skillsModalLabel" aria-hidden="true">
@@ -223,8 +233,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 </div>
                             </div>
 
-
-
                             <div class="col-lg-12 mb-3">
                                 <div class="card mt-3 border-0">
                                     <div class="card-body d-flex justify-content-between align-items-end p-0">
@@ -238,6 +246,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                     </div>
                                 </div>
                             </div>
+
                             <div class="col-lg-12">
                                 <button type="submit" class="bg-current text-center text-white font-xsss fw-600 p-3 w175 rounded-3 d-inline-block">Update</button>
                             </div>

@@ -1,8 +1,8 @@
 <?php
-
     session_start();
+
     if (!isset($_SESSION['user_id'])) {
-        header("Location: ../register.php"); 
+        header("Location: ../index.php"); 
         // exit(); 
     }
 
@@ -80,30 +80,40 @@
 
             <a href="#" class="p-2 text-center ms-auto menu-icon" id="dropdownMenu3" data-bs-toggle="dropdown" aria-expanded="false"><span class="dot-count bg-warning"></span><i class="feather-bell font-xl text-current"></i></a>
             <div class="dropdown-menu dropdown-menu-end p-4 rounded-3 border-0 shadow-lg" aria-labelledby="dropdownMenu3">
+    <h4 class="fw-700 font-xss mb-4">Notification</h4>
+    
+    <?php
+    session_start();
+    $mentee_id = $_SESSION['user_id']; // Get mentee ID from session
 
-                <h4 class="fw-700 font-xss mb-4">Notification</h4>
-                <div class="card bg-transparent-card w-100 border-0 ps-5 mb-3">
-                    <img src="images/user-8.png" alt="user" class="w40 position-absolute left-0">
-                    <h5 class="font-xsss text-grey-900 mb-1 mt-0 fw-700 d-block">Hendrix Stamp <span class="text-grey-400 font-xsssss fw-600 float-right mt-1"> 3 min</span></h5>
-                    <h6 class="text-grey-500 fw-500 font-xssss lh-4">There are many variations of pass..</h6>
-                </div>
-                <div class="card bg-transparent-card w-100 border-0 ps-5 mb-3">
-                    <img src="images/user-4.png" alt="user" class="w40 position-absolute left-0">
-                    <h5 class="font-xsss text-grey-900 mb-1 mt-0 fw-700 d-block">Goria Coast <span class="text-grey-400 font-xsssss fw-600 float-right mt-1"> 2 min</span></h5>
-                    <h6 class="text-grey-500 fw-500 font-xssss lh-4">Mobile Apps UI Designer is require..</h6>
-                </div>
+    // Database connection
+    $conn = new PDO('mysql:host=localhost;dbname=veloraa_db', 'root', ''); // Update with your credentials
 
-                <div class="card bg-transparent-card w-100 border-0 ps-5 mb-3">
-                    <img src="images/user-7.png" alt="user" class="w40 position-absolute left-0">
-                    <h5 class="font-xsss text-grey-900 mb-1 mt-0 fw-700 d-block">Surfiya Zakir <span class="text-grey-400 font-xsssss fw-600 float-right mt-1"> 1 min</span></h5>
-                    <h6 class="text-grey-500 fw-500 font-xssss lh-4">Mobile Apps UI Designer is require..</h6>
-                </div>
-                <div class="card bg-transparent-card w-100 border-0 ps-5">
-                    <img src="images/user-6.png" alt="user" class="w40 position-absolute left-0">
-                    <h5 class="font-xsss text-grey-900 mb-1 mt-0 fw-700 d-block">Victor Exrixon <span class="text-grey-400 font-xsssss fw-600 float-right mt-1"> 30 sec</span></h5>
-                    <h6 class="text-grey-500 fw-500 font-xssss lh-4">Mobile Apps UI Designer is require..</h6>
-                </div>
-            </div>
+    // Check for existing calls for the mentee
+    $stmt = $conn->prepare("SELECT room_id, mentor_id, created_at FROM calls_tbl WHERE mentee_id = ?");
+    $stmt->execute([$mentee_id]);
+    $existing_calls = $stmt->fetchAll();
+
+    if ($existing_calls) {
+        foreach ($existing_calls as $call) {
+            $room_id = htmlspecialchars($call['room_id']);
+            $mentor_id = htmlspecialchars($call['mentor_id']);
+            $created_at = htmlspecialchars($call['created_at']);
+            $time_diff = time() - strtotime($created_at);
+            $time_display = $time_diff < 60 ? "$time_diff sec" : round($time_diff / 60) . " min"; // Simple time display
+
+            echo "<div class='card bg-transparent-card w-100 border-0 ps-5 mb-3'>";
+            echo "<img src='images/user-{$mentor_id}.png' alt='user' class='w40 position-absolute left-0'>"; // Replace with actual image source logic if needed
+            echo "<h5 class='font-xsss text-grey-900 mb-1 mt-0 fw-700 d-block'>Mentor ID: $mentor_id <span class='text-grey-400 font-xsssss fw-600 float-right mt-1'>$time_display</span></h5>";
+            echo "<h6 class='text-grey-500 fw-500 font-xssss lh-4'>You have an ongoing call. <a href='join_call.php?room_id=$room_id'>Join Call</a></h6>";
+            echo "</div>";
+        }
+    } else {
+        echo "<div class='text-grey-500 fw-500 font-xssss lh-4'>You have no ongoing calls with any mentors.</div>";
+    }
+    ?>
+</div>
+            
             <a href="#" class="p-2 text-center ms-3 menu-icon chat-active-btn"><i class="feather-message-square font-xl text-current"></i></a>
             <div class="p-2 text-center ms-3 position-relative dropdown-menu-icon menu-icon cursor-pointer">
                 <i class="feather-settings animation-spin d-inline-block font-xl text-current"></i>

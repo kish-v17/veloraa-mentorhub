@@ -2,7 +2,7 @@
     session_start();
 
     if (!isset($_SESSION['user_id'])) {
-        header("Location: ../register.php"); 
+        header("Location: ../index.php"); 
         // exit(); 
     }
 
@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="../css/lightbox.css">
     <link rel="stylesheet" href="../css/video-player.css">
     <link rel="stylesheet" href="../css/bootstrap-datetimepicker.css">
+    <script src='https://8x8.vc/vpaas-magic-cookie-c4604cec7a16490fbea68e04eefd77b4/external_api.js' async></script>
 </head>
 
 <body class="color-theme-blue mont-font">
