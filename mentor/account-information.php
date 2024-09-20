@@ -1,58 +1,57 @@
 <?php
-include 'header.php';
-include '../database/db.php';   
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (isset($_POST['update'])) {
-        $userId = $_SESSION['user_id'];
+    include 'header.php';
+    include '../database/db.php';   
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if (isset($_POST['update'])) {
+            $userId = $_SESSION['user_id'];
 
-        $fullname = $_POST['fullname'];
-        $email = $_POST['email'];
-        $phone = $_POST['phone'];
-        $city = $_POST['city'];
-        $state = $_POST['state'];
-        $country = $_POST['country'];
-        $about = $_POST['about'];
-        $githubId = $_POST['githubId'];
-        $linkedinId = $_POST['linkedinId'];
-        $skills = isset($_POST['skill']) ? implode(', ', $_POST['skill']) : '';
-        $profilePhoto = $_FILES['file']['name'];
+            $fullname = $_POST['fullname'];
+            $email = $_POST['email'];
+            $phone = $_POST['phone'];
+            $city = $_POST['city'];
+            $state = $_POST['state'];
+            $country = $_POST['country'];
+            $about = $_POST['about'];
+            $githubId = $_POST['githubId'];
+            $linkedinId = $_POST['linkedinId'];
+            $skills = isset($_POST['skill']) ? implode(', ', $_POST['skill']) : '';
 
-        // File upload path
-        $targetDir = "../images/";
-        $targetFile = $targetDir . basename($_FILES["file"]["name"]);
+            $file_name=$_FILES['profile']['name'];
+            $file_tmp_loc=$_FILES['profile']['tmp_name'];
+            $profilePhoto="../images/".$file_name;
+        
+            if (move_uploaded_file($file_tmp_loc,$profilePhoto)) {
+                $stmt = $dbh->prepare("
+                    UPDATE user_tbl
+                    SET U_Fnm = :fullname, U_Phn = :phone, U_City = :city, U_State = :state, 
+                        U_Country = :country, U_About = :about, U_GitHub = :githubId, 
+                        U_LinkedIn = :linkedinId, U_Skill = :skills, U_Profile = :profilePhoto
+                    WHERE U_Id = :userId
+                ");
+                // Bind parameters
+                $stmt->bindParam(':fullname', $fullname);
+                $stmt->bindParam(':phone', $phone);
+                $stmt->bindParam(':city', $city);
+                $stmt->bindParam(':state', $state);
+                $stmt->bindParam(':country', $country);
+                $stmt->bindParam(':about', $about);
+                $stmt->bindParam(':githubId', $githubId);
+                $stmt->bindParam(':linkedinId', $linkedinId);
+                $stmt->bindParam(':skills', $skills);
+                $stmt->bindParam(':profilePhoto', $profilePhoto);  // Use the full path here
+                $stmt->bindParam(':userId', $userId);
 
-        if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFile)) {
-            $stmt = $dbh->prepare("
-                UPDATE user_tbl
-                SET U_Fnm = :fullname, U_Phn = :phone, U_City = :city, U_State = :state, 
-                    U_Country = :country, U_About = :about, U_GitHub = :githubId, 
-                    U_LinkedIn = :linkedinId, U_Skill = :skills, U_Profile = :profilePhoto
-                WHERE U_Id = :userId
-            ");
-            // Bind parameters
-            $stmt->bindParam(':fullname', $fullname);
-            $stmt->bindParam(':phone', $phone);
-            $stmt->bindParam(':city', $city);
-            $stmt->bindParam(':state', $state);
-            $stmt->bindParam(':country', $country);
-            $stmt->bindParam(':about', $about);
-            $stmt->bindParam(':githubId', $githubId);
-            $stmt->bindParam(':linkedinId', $linkedinId);
-            $stmt->bindParam(':skills', $skills);
-            $stmt->bindParam(':profilePhoto', $profilePhoto);
-            $stmt->bindParam(':userId', $userId);
-
-            if ($stmt->execute()) {
-                echo "<div class='alert alert-success'>Profile updated successfully.</div>";
+                if ($stmt->execute()) {
+                    echo "<div class='alert alert-success'>Profile updated successfully.</div>";
+                } else {
+                    $errorInfo = $stmt->errorInfo();
+                    echo "<div class='alert alert-danger'>Error updating profile: " . $errorInfo[2] . "</div>";
+                }
             } else {
-                $errorInfo = $stmt->errorInfo();
-                echo "<div class='alert alert-danger'>Error updating profile: " . $errorInfo[2] . "</div>";
+                echo "<div class='alert alert-danger'>Error uploading file.</div>";
             }
-        } else {
-            echo "<div class='alert alert-danger'>Error uploading file.</div>";
         }
     }
-}
 ?>
 <!-- main content -->
 <div class="main-content bg-lightblue theme-dark-bg right-chat-active">
@@ -66,41 +65,41 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <h4 class="font-xs text-white fw-600 ms-4 mb-0 mt-2">Account Details</h4>
                     </div>
                     <?php
-                        require '../database/db.php'; // Ensure you include your database connection
-                        // error_reporting(0);
-                        if (isset($_SESSION['user_id'])) {
-                            $userId = $_SESSION['user_id'];
+                    require '../database/db.php'; // Ensure you include your database connection
+                    // error_reporting(0);
+                    if (isset($_SESSION['user_id'])) {
+                        $userId = $_SESSION['user_id'];
 
-                            // Fetch user data
-                            $stmt = $dbh->prepare("
-                                SELECT U_Fnm,U_Email,U_Phn, U_City, U_State, U_Country, U_About, U_GitHub, U_LinkedIn, U_Skill, U_Profile
-                                FROM user_tbl
-                                WHERE U_Id = :userId
-                            ");
+                        // Fetch user data
+                        $stmt = $dbh->prepare("
+                            SELECT U_Fnm,U_Email,U_Phn, U_City, U_State, U_Country, U_About, U_GitHub, U_LinkedIn, U_Skill, U_Profile
+                            FROM user_tbl
+                            WHERE U_Id = :userId
+                        ");
 
-                            $stmt->bindParam(':userId', $userId);
-                            $stmt->execute();
-                            $userData = $stmt->fetch(PDO::FETCH_ASSOC);
+                        $stmt->bindParam(':userId', $userId);
+                        $stmt->execute();
+                        $userData = $stmt->fetch(PDO::FETCH_ASSOC);
 
-                            if ($userData) {
-                                // Store user data in variables
-                                $fullname = $userData['U_Fnm'];
-                                $email = $userData['U_Email'];
-                                $phone = $userData['U_Phn'];
-                                $city = $userData['U_City'];
-                                $state = $userData['U_State'];
-                                $country = $userData['U_Country'];
-                                $about = $userData['U_About'];
-                                $githubId = $userData['U_GitHub'];
-                                $linkedinId = $userData['U_LinkedIn'];
-                                $skills = $userData['U_Skill'];
-                                $profilePhoto = "../images".$userData['U_Profile'];
-                            } else {
-                                echo "<div class='alert alert-danger'>No user data found.</div>";
-                            }
+                        if ($userData) {
+                            // Store user data in variables
+                            $fullname = $userData['U_Fnm'];
+                            $email = $userData['U_Email'];
+                            $phone = $userData['U_Phn'];
+                            $city = $userData['U_City'];
+                            $state = $userData['U_State'];
+                            $country = $userData['U_Country'];
+                            $about = $userData['U_About'];
+                            $githubId = $userData['U_GitHub'];
+                            $linkedinId = $userData['U_LinkedIn'];
+                            $skills = $userData['U_Skill'];
+                            $profilePhoto = "../images/" . $userData['U_Profile'];
                         } else {
-                            echo "<div class='alert alert-danger'>User is not logged in.</div>";
+                            echo "<div class='alert alert-danger'>No user data found.</div>";
                         }
+                    } else {
+                        echo "<div class='alert alert-danger'>User is not logged in.</div>";
+                    }
                     ?>
 
                     <div class="card-body p-lg-5 p-4 w-100 border-0">
@@ -236,7 +235,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <div class="card mt-3 border-0">
                                     <div class="card-body d-flex justify-content-between align-items-end p-0">
                                         <div class="form-group mb-0 w-100">
-                                            <input type="file" name="file" id="file" class="input-file">
+                                            <input type="file" name="profile" id="file" class="input-file">
                                             <label for="file" name="profile" class="rounded-3 text-center bg-white btn-tertiary js-labelFile p-4 w-100 border-dashed">
                                                 <i class="ti-cloud-down large-icon me-3 d-block"></i>
                                                 <span class="js-fileName">Drag and drop or click to select profile photo</span>

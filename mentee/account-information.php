@@ -1,58 +1,57 @@
 <?php
-include 'header.php';
-include '../database/db.php';   
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (isset($_POST['update'])) {
-        $userId = $_SESSION['user_id'];
+    include 'header.php';
+    include '../database/db.php';   
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if (isset($_POST['update'])) {
+            $userId = $_SESSION['user_id'];
 
-        $fullname = $_POST['fullname'];
-        $email = $_POST['email'];
-        $phone = $_POST['phone'];
-        $city = $_POST['city'];
-        $state = $_POST['state'];
-        $country = $_POST['country'];
-        $about = $_POST['about'];
-        $githubId = $_POST['githubId'];
-        $linkedinId = $_POST['linkedinId'];
-        $skills = isset($_POST['skill']) ? implode(', ', $_POST['skill']) : '';
-        $profilePhoto = $_FILES['file']['name'];
+            $fullname = $_POST['fullname'];
+            $email = $_POST['email'];
+            $phone = $_POST['phone'];
+            $city = $_POST['city'];
+            $state = $_POST['state'];
+            $country = $_POST['country'];
+            $about = $_POST['about'];
+            $githubId = $_POST['githubId'];
+            $linkedinId = $_POST['linkedinId'];
+            $skills = $_POST['skill'];
 
-        // File upload path
-        $targetDir = "../images/";
-        $targetFile = $targetDir . basename($_FILES["file"]["name"]);
+            $file_name=$_FILES['profile']['name'];
+            $file_tmp_loc=$_FILES['profile']['tmp_name'];
+            $profilePhoto="../images/".$file_name;
+        
+            if (move_uploaded_file($file_tmp_loc,$profilePhoto)) {
+                $stmt = $dbh->prepare("
+                    UPDATE user_tbl
+                    SET U_Fnm = :fullname, U_Phn = :phone, U_City = :city, U_State = :state, 
+                        U_Country = :country, U_About = :about, U_GitHub = :githubId, 
+                        U_LinkedIn = :linkedinId, U_Skill = :skills , U_Profile = :profilePhoto
+                    WHERE U_Id = :userId
+                ");
+                // Bind parameters
+                $stmt->bindParam(':fullname', $fullname);
+                $stmt->bindParam(':phone', $phone);
+                $stmt->bindParam(':city', $city);
+                $stmt->bindParam(':state', $state);
+                $stmt->bindParam(':country', $country);
+                $stmt->bindParam(':about', $about);
+                $stmt->bindParam(':githubId', $githubId);
+                $stmt->bindParam(':linkedinId', $linkedinId);
+                $stmt->bindParam(':skills', $skills);
+                $stmt->bindParam(':profilePhoto', $profilePhoto);  // Use the full path here
+                $stmt->bindParam(':userId', $userId);
 
-        if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFile)) {
-            $stmt = $dbh->prepare("
-                UPDATE user_tbl
-                SET U_Fnm = :fullname, U_Phn = :phone, U_City = :city, U_State = :state, 
-                    U_Country = :country, U_About = :about, U_GitHub = :githubId, 
-                    U_LinkedIn = :linkedinId, U_Skill = :skills, U_Profile = :profilePhoto
-                WHERE U_Id = :userId
-            ");
-            // Bind parameters
-            $stmt->bindParam(':fullname', $fullname);
-            $stmt->bindParam(':phone', $phone);
-            $stmt->bindParam(':city', $city);
-            $stmt->bindParam(':state', $state);
-            $stmt->bindParam(':country', $country);
-            $stmt->bindParam(':about', $about);
-            $stmt->bindParam(':githubId', $githubId);
-            $stmt->bindParam(':linkedinId', $linkedinId);
-            $stmt->bindParam(':skills', $skills);
-            $stmt->bindParam(':profilePhoto', $profilePhoto);
-            $stmt->bindParam(':userId', $userId);
-
-            if ($stmt->execute()) {
-                echo "<div class='alert alert-success'>Profile updated successfully.</div>";
+                if ($stmt->execute()) {
+                    echo "<div class='alert alert-success'>Profile updated successfully.</div>";
+                } else {
+                    $errorInfo = $stmt->errorInfo();
+                    echo "<div class='alert alert-danger'>Error updating profile: " . $errorInfo[2] . "</div>";
+                }
             } else {
-                $errorInfo = $stmt->errorInfo();
-                echo "<div class='alert alert-danger'>Error updating profile: " . $errorInfo[2] . "</div>";
+                echo "<div class='alert alert-danger'>Error uploading file.</div>";
             }
-        } else {
-            echo "<div class='alert alert-danger'>Error uploading file.</div>";
         }
     }
-}
 ?>
 <!-- main content -->
 <div class="main-content bg-lightblue theme-dark-bg right-chat-active">
@@ -94,7 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             $githubId = $userData['U_GitHub'];
                             $linkedinId = $userData['U_LinkedIn'];
                             $skills = $userData['U_Skill'];
-                            $profilePhoto = $userData['U_Profile'];
+                            $profilePhoto = "../images/" . $userData['U_Profile'];
                         } else {
                             echo "<div class='alert alert-danger'>No user data found.</div>";
                         }
@@ -189,12 +188,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <div class="col-lg-6 mb-3">
                                     <div class="form-group">
                                         <label class="mont-font fw-600 font-xsss">Skills</label>
-                                        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#skillsModal">
-                                            Select Skills
-                                        </button>
+                                        <select name="skill" class="searchCat sort"> 
+                                            <option value="">Select skill</option>
+                                            <option value="c ">c</option>
+                                            <option value="cpp ">c++</option>
+                                            <option value="asp.net ">ASP.net</option>
+                                            <option value="cs.net ">c#.net</option>
+                                            <option value="php ">PHP</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
+
+                            
 
                             <!-- Skills Modal -->
                             <div class="modal fade" id="skillsModal" tabindex="-1" aria-labelledby="skillsModalLabel" aria-hidden="true">
@@ -236,7 +242,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <div class="card mt-3 border-0">
                                     <div class="card-body d-flex justify-content-between align-items-end p-0">
                                         <div class="form-group mb-0 w-100">
-                                            <input type="file" name="file" id="file" class="input-file">
+                                            <input type="file" name="profile" id="file" class="input-file">
                                             <label for="file" name="profile" class="rounded-3 text-center bg-white btn-tertiary js-labelFile p-4 w-100 border-dashed">
                                                 <i class="ti-cloud-down large-icon me-3 d-block"></i>
                                                 <span class="js-fileName">Drag and drop or click to select profile photo</span>
