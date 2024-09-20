@@ -1,6 +1,6 @@
 <?php include('header.php');
 // call.php
-// session_start();
+session_start();
 $mentee_id = $_SESSION['user_id']; // Get mentee ID from session
 $mentor_id = $_GET['mentorId']; // Assume mentor ID is passed via GET
 error_reporting(0);

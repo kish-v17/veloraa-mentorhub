@@ -331,7 +331,7 @@
                             <img src="' . $profileImage . '" alt="image" class="float-right p-1 bg-white rounded-circle w-100">
                         </figure>
                         <div class="clearfix"></div>
-                        <h4 class="fw-700 font-xsss mt-3 mb-1"><a href="mentor-profile.php?mentorId='.$uid.'">' . $name . '</a></h4>
+                        <a href="mentor-profile.php?mentorId='.$uid.'"><h4 class="fw-700 font-xsss mt-3 mb-1">' . $name . '</h4></a>
                         <p class="fw-500 font-xsssss text-grey-500 mt-0 mb-3">' . $email . '</p>
                         <span class="position-absolute right-15 top-0 d-flex align-items-center">
                             <a href="mentee-video-call.php?mentorId='.$uid.'" class="d-lg-block d-none"><i class="feather-video btn-round-md font-md bg-primary-gradiant text-white"></i></a>

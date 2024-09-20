@@ -147,7 +147,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                         <!-- Register Form -->
                         <div id="register-form">
-                            <form method="post" action="register.php">
+                            <form method="post">
                                 <h3 class="fw-700 display1-size display2-md-size mb-4">Create <br>your account</h3>
                                 <div class="form-group mb-3 text-center">
                                     <div class="d-flex justify-content-center align-items-center">
@@ -200,7 +200,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                         <!-- Login Form -->
                         <div id="login-form">
-                            <form method="post" action="">
+                            <form method="post">
                                 <h3 class="fw-700 display1-size display2-md-size mb-4">Log into <br>your account</h3>
                                 <div class="form-group icon-input mb-3">
                                     <i class="font-sm ti-email text-grey-500 pe-0"></i>
