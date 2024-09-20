@@ -1,5 +1,6 @@
 <?php
 $current_page = basename($_SERVER['PHP_SELF']);
+require 'database/db.php'
 
 ?>
 <!DOCTYPE html>
