@@ -1,9 +1,15 @@
 <?php
-$current_page = basename($_SERVER['PHP_SELF']);
-session_start();
-require 'database/db.php';
 
+    session_start();
+    if (!isset($_SESSION['user_id'])) {
+        header("Location: ../register.php"); 
+        // exit(); 
+    }
+
+    $current_page = basename($_SERVER['PHP_SELF']);
+    require '../database/db.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,21 +19,22 @@ require 'database/db.php';
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Veloraa MentorHub </title>
 
-    <link rel="stylesheet" href="css/themify-icons.css">
-    <link rel="stylesheet" href="css/feather.css">
+    <link rel="stylesheet" href="../css/themify-icons.css">
+    <link rel="stylesheet" href="../css/feather.css">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="10x16" href="images/logo.png">
+    <link rel="icon" type="image/png" sizes="10x16" href="../images/logo.png">
     <!-- Custom Stylesheet -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/emoji.css">
-    <link rel="stylesheet" href="css/lightbox.css">
-    <link rel="stylesheet" href="css/video-player.css">
-    <link rel="stylesheet" href="css/bootstrap-datetimepicker.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/emoji.css">
+
+    <link rel="stylesheet" href="../css/lightbox.css">
+    <link rel="stylesheet" href="../css/video-player.css">
+    <link rel="stylesheet" href="../css/bootstrap-datetimepicker.css">
 </head>
 
 <body class="color-theme-blue mont-font">
 
-    <div class="preloader"></div>
+    <!-- <div class="preloader"></div> -->
 
 
     <div class="main-wrapper">
@@ -35,7 +42,7 @@ require 'database/db.php';
         <!-- navigation top-->
         <div class="nav-header bg-white shadow-xs border-0">
             <div class="nav-top">
-                <a href="index.php"><img src="images/logo.png" style="height:40px" /><span class="d-inline-block fredoka-font ls-3 fw-600 text-current font-xxl logo-text mb-0">Veloraa</span> </a>
+                <a href="index.php"><img src="../images/logo.png" style="height:40px" /><span class="d-inline-block fredoka-font ls-3 fw-600 text-current font-xxl logo-text mb-0">Veloraa</span> </a>
                 <a href="#" class="mob-menu ms-auto me-2 chat-active-btn"><i class="feather-message-circle text-grey-900 font-sm btn-round-md bg-greylight"></i></a>
                 <a href="default-video.php" class="mob-menu me-2"><i class="feather-video text-grey-900 font-sm btn-round-md bg-greylight"></i></a>
                 <a href="#" class="me-2 menu-search-icon mob-menu"><i class="feather-search text-grey-900 font-sm btn-round-md bg-greylight"></i></a>
@@ -202,7 +209,7 @@ require 'database/db.php';
             </div>
 
 
-            <a href="default-settings.php" class="p-0 ms-3 menu-icon"><img src="images/profile-4.png" alt="user" class="w40 mt--1"></a>
+            <a href="default-settings.php" class="p-0 ms-3 menu-icon"><img src="../images/profile-4.png" alt="user" class="w40 mt--1"></a>
 
         </div>
         <!-- navigation top -->

@@ -1,4 +1,4 @@
-<?php include('header.php'); ?>
+    <?php include('header.php'); ?>
         <!-- main content -->
         <div class="main-content right-chat-active">
             
