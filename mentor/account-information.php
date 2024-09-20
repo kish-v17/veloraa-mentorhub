@@ -1,56 +1,56 @@
 <?php
 include 'header.php';
-
-
+include '../database/db.php';   
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if (isset($_POST['update'])) {
+        $userId = $_SESSION['user_id'];
 
-    $fullname = $_POST['fullname'];
-    $email = $_POST['email'];
-    $phone = $_POST['phone'];
-    $city = $_POST['city'];
-    $state = $_POST['state'];
-    $country = $_POST['country'];
-    $about = $_POST['about'];
-    $githubId = $_POST['githubId'];
-    $linkedinId = $_POST['linkedinId'];
-    $skills = isset($_POST['skill']) ? implode(', ', $_POST['skill']) : '';
-    $profilePhoto = $_FILES['file']['name'];
+        $fullname = $_POST['fullname'];
+        $email = $_POST['email'];
+        $phone = $_POST['phone'];
+        $city = $_POST['city'];
+        $state = $_POST['state'];
+        $country = $_POST['country'];
+        $about = $_POST['about'];
+        $githubId = $_POST['githubId'];
+        $linkedinId = $_POST['linkedinId'];
+        $skills = isset($_POST['skill']) ? implode(', ', $_POST['skill']) : '';
+        $profilePhoto = $_FILES['file']['name'];
 
-    $userId = $_SESSION['user_id'];
+        // File upload path
+        $targetDir = "../images/";
+        $targetFile = $targetDir . basename($_FILES["file"]["name"]);
 
-    // File upload path
-    $targetDir = "uploads/";
-    $targetFile = $targetDir . basename($_FILES["file"]["name"]);
+        if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFile)) {
+            $stmt = $dbh->prepare("
+                UPDATE user_tbl
+                SET U_Fnm = :fullname, U_Phn = :phone, U_City = :city, U_State = :state, 
+                    U_Country = :country, U_About = :about, U_GitHub = :githubId, 
+                    U_LinkedIn = :linkedinId, U_Skill = :skills, U_Profile = :profilePhoto
+                WHERE U_Id = :userId
+            ");
+            // Bind parameters
+            $stmt->bindParam(':fullname', $fullname);
+            $stmt->bindParam(':phone', $phone);
+            $stmt->bindParam(':city', $city);
+            $stmt->bindParam(':state', $state);
+            $stmt->bindParam(':country', $country);
+            $stmt->bindParam(':about', $about);
+            $stmt->bindParam(':githubId', $githubId);
+            $stmt->bindParam(':linkedinId', $linkedinId);
+            $stmt->bindParam(':skills', $skills);
+            $stmt->bindParam(':profilePhoto', $profilePhoto);
+            $stmt->bindParam(':userId', $userId);
 
-    if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFile)) {
-        $stmt = $pdo->prepare("
-            UPDATE user_tbl
-            SET U_Fnm = :fullname, U_Phn = :phone, U_City = :city, U_State = :state, U_Country = :country,
-                U_About = :about, U_GitHub = :githubId, U_LinkedIn = :linkedinId, U_Skill = :skills,
-                U_Profile = :profilePhoto
-            WHERE id = :userId
-        ");
-
-        // Bind parameters
-        $stmt->bindParam(':fullname', $fullname);
-        $stmt->bindParam(':phone', $phone);
-        $stmt->bindParam(':city', $city);
-        $stmt->bindParam(':state', $state);
-        $stmt->bindParam(':country', $country);
-        $stmt->bindParam(':about', $about);
-        $stmt->bindParam(':githubId', $githubId);
-        $stmt->bindParam(':linkedinId', $linkedinId);
-        $stmt->bindParam(':skills', $skills);
-        $stmt->bindParam(':profilePhoto', $profilePhoto);
-        $stmt->bindParam(':userId', $userId);
-
-        if ($stmt->execute()) {
-            echo "<div class='alert alert-success'>Profile updated successfully.</div>";
+            if ($stmt->execute()) {
+                echo "<div class='alert alert-success'>Profile updated successfully.</div>";
+            } else {
+                $errorInfo = $stmt->errorInfo();
+                echo "<div class='alert alert-danger'>Error updating profile: " . $errorInfo[2] . "</div>";
+            }
         } else {
-            echo "<div class='alert alert-danger'>Error updating profile.</div>";
+            echo "<div class='alert alert-danger'>Error uploading file.</div>";
         }
-    } else {
-        echo "<div class='alert alert-danger'>Error uploading file.</div>";
     }
 }
 ?>
@@ -65,59 +65,68 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <a href="default-settings.php" class="d-inline-block mt-2"><i class="ti-arrow-left font-sm text-white"></i></a>
                         <h4 class="font-xs text-white fw-600 ms-4 mb-0 mt-2">Account Details</h4>
                     </div>
-
                     <?php
-                    if (isset($_SESSION['user_id'])) {
-                        $userId = $_SESSION['user_id'];
+                        require '../database/db.php'; // Ensure you include your database connection
+                        // error_reporting(0);
+                        if (isset($_SESSION['user_id'])) {
+                            $userId = $_SESSION['user_id'];
 
-                        $stmt = $dbh->prepare("
-                                        SELECT U_Fnm, U_Phn, U_City, U_State, U_Country, U_About, U_GitHub, U_LinkedIn, U_Skill, U_Profile
-                                        FROM user_tbl
-                                        WHERE U_Id = :userId
-                                    ");
+                            // Fetch user data
+                            $stmt = $dbh->prepare("
+                                SELECT U_Fnm,U_Email,U_Phn, U_City, U_State, U_Country, U_About, U_GitHub, U_LinkedIn, U_Skill, U_Profile
+                                FROM user_tbl
+                                WHERE U_Id = :userId
+                            ");
 
-                        $stmt->bindParam(':userId', $userId);
-                        $stmt->execute();
-                        $userData = $stmt->fetch(PDO::FETCH_ASSOC);
+                            $stmt->bindParam(':userId', $userId);
+                            $stmt->execute();
+                            $userData = $stmt->fetch(PDO::FETCH_ASSOC);
 
-                        if ($userData) {
-                            $fullname = $userData['U_Fnm'];
-                            $phone = $userData['U_Phn'];
-                            $city = $userData['U_City'];
-                            $state = $userData['U_State'];
-                            $country = $userData['U_Country'];
-                            $about = $userData['U_About'];
-                            $githubId = $userData['U_GitHub'];
-                            $linkedinId = $userData['U_LinkedIn'];
-                            $skills = $userData['U_Skill'];
-                            $profilePhoto = $userData['U_Profile'];
+                            if ($userData) {
+                                // Store user data in variables
+                                $fullname = $userData['U_Fnm'];
+                                $email = $userData['U_Email'];
+                                $phone = $userData['U_Phn'];
+                                $city = $userData['U_City'];
+                                $state = $userData['U_State'];
+                                $country = $userData['U_Country'];
+                                $about = $userData['U_About'];
+                                $githubId = $userData['U_GitHub'];
+                                $linkedinId = $userData['U_LinkedIn'];
+                                $skills = $userData['U_Skill'];
+                                $profilePhoto = "../images".$userData['U_Profile'];
+                            } else {
+                                echo "<div class='alert alert-danger'>No user data found.</div>";
+                            }
                         } else {
-                            echo "<div class='alert alert-danger'>No user data found.</div>";
+                            echo "<div class='alert alert-danger'>User is not logged in.</div>";
                         }
-                    } ?>
-                    <div class="card-body p-lg-5 p-4 w-100 border-0 ">
+                    ?>
+
+                    <div class="card-body p-lg-5 p-4 w-100 border-0">
                         <div class="row justify-content-center">
                             <div class="col-lg-4 text-center">
-                                <figure class="avatar ms-auto me-auto mb-0 mt-2 w100"><img src="<?php echo '.$profilePhoto.'; ?>" alt="image" class="shadow-sm rounded-3 w-100"></figure>
-                                <h2 class="fw-700 font-sm text-grey-900 mt-3"><?php echo "{$_SESSION['user_name']}"; ?></h2>
-                                <h4 class="text-grey-500 fw-500 mb-3 font-xsss mb-4"> <?php echo $city ?></h4>
-                                <!-- <a href="#" class="p-3 alert-primary text-primary font-xsss fw-500 mt-2 rounded-3">Upload New Photo</a> -->
+                                <figure class="avatar ms-auto me-auto mb-0 mt-2 w100">
+                                    <img src="<?php echo htmlspecialchars($profilePhoto); ?>" alt="image" class="shadow-sm rounded-3 w-100">
+                                </figure>
+                                <h2 class="fw-700 font-sm text-grey-900 mt-3"><?php echo htmlspecialchars($_SESSION['user_name']); ?></h2>
+                                <h4 class="text-grey-500 fw-500 mb-3 font-xsss mb-4"><?php echo htmlspecialchars($city); ?></h4>
                             </div>
                         </div>
 
-                        <form action="#">
+                        <form action="" method="POST" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col-lg-6 mb-3">
                                     <div class="form-group">
                                         <label class="mont-font fw-600 font-xsss">Full Name</label>
-                                        <input type="text" class="form-control" name="fullname">
+                                        <input type="text" class="form-control" name="fullname" value="<?php echo htmlspecialchars($fullname); ?>" required>
                                     </div>
                                 </div>
 
                                 <div class="col-lg-6 mb-3">
                                     <div class="form-group">
                                         <label class="mont-font fw-600 font-xsss">Email</label>
-                                        <input type="text" class="form-control" name="email" value="hello@gmail.com" readonly>
+                                        <input type="email" class="form-control" name="email" value="<?php echo htmlspecialchars($email); ?>" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -126,14 +135,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <div class="col-lg-6 mb-3">
                                     <div class="form-group">
                                         <label class="mont-font fw-600 font-xsss">Phone</label>
-                                        <input type="text" class="form-control" name="phone">
+                                        <input type="text" class="form-control" name="phone" value="<?php echo htmlspecialchars($phone); ?>" required>
                                     </div>
                                 </div>
 
                                 <div class="col-lg-6 mb-3">
                                     <div class="form-group">
                                         <label class="mont-font fw-600 font-xsss">City</label>
-                                        <input type="text" class="form-control" name="city">
+                                        <input type="text" class="form-control" name="city" value="<?php echo htmlspecialchars($city); ?>" required>
                                     </div>
                                 </div>
                             </div>
@@ -142,13 +151,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <div class="col-lg-6 mb-3">
                                     <div class="form-group">
                                         <label class="mont-font fw-600 font-xsss">State</label>
-                                        <input type="text" class="form-control" name="state">
+                                        <input type="text" class="form-control" name="state" value="<?php echo htmlspecialchars($state); ?>" required>
                                     </div>
                                 </div>
+
                                 <div class="col-lg-6 mb-3">
                                     <div class="form-group">
                                         <label class="mont-font fw-600 font-xsss">Country</label>
-                                        <input type="text" class="form-control" name="country">
+                                        <input type="text" class="form-control" name="country" value="<?php echo htmlspecialchars($country); ?>" required>
                                     </div>
                                 </div>
                             </div>
@@ -156,7 +166,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <div class="row">
                                 <div class="col-lg-12 mb-3">
                                     <label class="mont-font fw-600 font-xsss">About</label>
-                                    <textarea class="form-control mb-0 p-3 h100 lh-16" rows="5" name="about" placeholder="Write your message..." spellcheck="false"></textarea>
+                                    <textarea class="form-control mb-0 p-3 h100 lh-16" rows="5" name="about" placeholder="Write about yourself..." required><?php echo htmlspecialchars($about); ?></textarea>
                                 </div>
                             </div>
 
@@ -164,13 +174,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <div class="col-lg-6 mb-3">
                                     <div class="form-group">
                                         <label class="mont-font fw-600 font-xsss">Github Id</label>
-                                        <input type="text" class="form-control" name="githubId">
+                                        <input type="text" class="form-control" name="githubId" value="<?php echo htmlspecialchars($githubId); ?>">
                                     </div>
                                 </div>
                                 <div class="col-lg-6 mb-3">
                                     <div class="form-group">
-                                        <label class="mont-font fw-600 font-xsss">Linked Id</label>
-                                        <input type="text" class="form-control" name="linkedinId">
+                                        <label class="mont-font fw-600 font-xsss">LinkedIn Id</label>
+                                        <input type="text" class="form-control" name="linkedinId" value="<?php echo htmlspecialchars($linkedinId); ?>">
                                     </div>
                                 </div>
                             </div>
@@ -186,23 +196,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 </div>
                             </div>
 
-
-
-
-
-
-
-
-
                             <!-- Skills Modal -->
                             <div class="modal fade" id="skillsModal" tabindex="-1" aria-labelledby="skillsModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="skillsModalLabel">Select Skills</h5>
-                                            <button type="button" data-bs-target="#Modalstory" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
-                                        <!-- <div class="modal-body">
+                                        <div class="modal-body">
                                             <input type="text" id="skillsSearch" class="form-control mb-3" placeholder="Search for skills...">
                                             <div id="skillsList">
                                                 <label class="form-check">
@@ -221,29 +223,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                                     <input type="checkbox" name="skill[]" value="php" <?php echo in_array('php', explode(',', $skills)) ? 'checked' : ''; ?>> PHP
                                                 </label>
                                             </div>
-                                        </div> -->
-
-                                        <div class="modal bottom side fade" id="Modalstory" tabindex="-1" role="dialog" style=" overflow-y: auto;">
-                                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                                <div class="modal-content border-0 bg-transparent">
-                                                    <button type="button" class="close mt-0 position-absolute top--30 right--10" data-dismiss="modal" aria-label="Close"><i class="ti-close text-grey-900 font-xssss"></i></button>
-                                                    <div class="modal-body p-0">
-                                                        <div class="card w-100 border-0 rounded-3 overflow-hidden bg-gradiant-bottom bg-gradiant-top">
-                                                            <div class="owl-carousel owl-theme dot-style3 story-slider owl-dot-nav nav-none">
-                                                                <div class="item"><img src="images/story-5.jpg" alt="image"></div>
-                                                                <div class="item"><img src="images/story-6.jpg" alt="image"></div>
-                                                                <div class="item"><img src="images/story-7.jpg" alt="image"></div>
-                                                                <div class="item"><img src="images/story-8.jpg" alt="image"></div>
-
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group mt-3 mb-0 p-3 position-absolute bottom-0 z-index-1 w-100">
-                                                            <input type="text" class="style2-input w-100 bg-transparent border-light-md p-3 pe-5 font-xssss fw-500 text-white" value="Write Comments">
-                                                            <span class="feather-send text-white font-md text-white position-absolute" style="bottom: 35px;right:30px;"></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -252,8 +231,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                     </div>
                                 </div>
                             </div>
-
-
 
                             <div class="col-lg-12 mb-3">
                                 <div class="card mt-3 border-0">
@@ -268,8 +245,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                     </div>
                                 </div>
                             </div>
+
                             <div class="col-lg-12">
-                                <button type="submit" class="bg-current text-center text-white font-xsss fw-600 p-3 w175 rounded-3 d-inline-block">Update</button>
+                                <input type="submit" value="Update" name="update" class="bg-current text-center text-white font-xsss fw-600 p-3 w175 rounded-3 d-inline-block">
                             </div>
                         </form>
                     </div>
