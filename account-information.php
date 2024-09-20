@@ -68,7 +68,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <div class="card-body p-lg-5 p-4 w-100 border-0 ">
                         <div class="row justify-content-center">
                             <div class="col-lg-4 text-center">
-                                <?php  ?>
                                 <figure class="avatar ms-auto me-auto mb-0 mt-2 w100"><img src="images/pt-1.jpg" alt="image" class="shadow-sm rounded-3 w-100"></figure>
                                 <h2 class="fw-700 font-sm text-grey-900 mt-3"><?php echo "{$_SESSION['user_name']}"; ?></h2>
                                 <h4 class="text-grey-500 fw-500 mb-3 font-xsss mb-4">Brooklyn</h4>
