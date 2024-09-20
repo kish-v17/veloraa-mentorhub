@@ -49,16 +49,14 @@ if ($userData) {
             $unfollowStmt->bindParam(':mentorId', $userId);
             $unfollowStmt->bindParam(':followerId', $currentUserId);
             $unfollowStmt->execute();
-            $isFollowing = false;
-            echo "<script>alert('You have unfollowed this mentor.');</script>";
+            echo "You have unfollowed this mentor."; // You can handle this message in the frontend
         } else {
             // Follow
             $followStmt = $dbh->prepare("INSERT INTO follow_tbl (F_MentorId, F_FollowedById) VALUES (:mentorId, :followerId)");
             $followStmt->bindParam(':mentorId', $userId);
             $followStmt->bindParam(':followerId', $currentUserId);
             $followStmt->execute();
-            $isFollowing = true;
-            echo "<script>alert('You are now following this mentor.');</script>";
+            echo "You are now following this mentor."; // You can handle this message in the frontend
         }
     }
 } else {
@@ -96,9 +94,16 @@ if ($userData) {
                             </div>
                             <div
                                 class="d-flex align-items-center justify-content-center position-absolute right-15 top-10 mt-2 me-2">
-                                <button
-                                    class="d-none d-lg-block bg-success p-3 z-index-1 rounded-3 text-white font-xsssss text-uppercase fw-700 ls-3"
-                                    style="border:none">Follow</button>
+                                <!-- follow btn form -->
+                                <form id="followForm" action="" method="POST">
+                                    <input type="hidden" name="mentorId"
+                                        value="<?php echo htmlspecialchars($userId); ?>">
+                                    <button type="submit" id="followButton"
+                                        class="d-none d-lg-block bg-success p-3 z-index-1 rounded-3 text-white font-xsssss text-uppercase fw-700 ls-3"
+                                        style="border:none">
+                                        <?php echo $isFollowing ? 'Following' : 'Follow'; ?>
+                                    </button>
+                                </form>
                                 <a href="#"
                                     class="d-none d-lg-block bg-greylight btn-round-lg ms-2 rounded-3 text-grey-700"><i
                                         class="feather-mail font-md"></i></a>
@@ -430,23 +435,23 @@ if ($userData) {
     document.getElementById('followForm').addEventListener('submit', function (event) {
         event.preventDefault(); // Prevent the default form submission
 
-        var followButton = document.getElementById('followButton');
-        followButton.innerHTML = 'Following'; // Change button text
-
-        // Optionally, you can make an AJAX request to follow.php here if you prefer
-        // For example, using fetch API to send the form data
         var formData = new FormData(this);
+        var followButton = document.getElementById('followButton');
+
         fetch(this.action, {
             method: 'POST',
             body: formData,
-        }).then(response => {
-            // Handle the response
-            return response.text();
-        }).then(data => {
-            console.log(data); // Optional: handle success/failure messages
-        }).catch(error => {
-            console.error('Error:', error);
-        });
+        }).then(response => response.text())
+            .then(data => {
+                if (followButton.innerHTML === 'Follow') {
+                    followButton.innerHTML = 'Following'; // Change button text to 'Following'
+                } else {
+                    followButton.innerHTML = 'Follow'; // Change button text back to 'Follow'
+                }
+                console.log(data); // Optional: handle success/failure messages
+            }).catch(error => {
+                console.error('Error:', error);
+            });
     });
 </script>
 
