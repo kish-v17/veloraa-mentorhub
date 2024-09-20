@@ -21,9 +21,9 @@
 
     <script>
         // Replace these with your Jitsi-as-a-Service (JaaS) credentials
-        const apiKey = 'YOUR_API_KEY';
+        const apiKey = 'vpaas-magic-cookie-c918511a2d644e5fbffbfdddd32db047/37968f';
         const appId = 'vpaas-magic-cookie-c918511a2d644e5fbffbfdddd32db047';
-        const tenant = 'YOUR_TENANT_NAME';  // Provided in your JaaS dashboard
+        // const tenant = 'YOUR_TENANT_NAME';  // Provided in your JaaS dashboard
         
         // Create the Jitsi Meet API object
         const domain = '8x8.vc';
@@ -36,8 +36,7 @@
             },
             interfaceConfigOverwrite: {
                 filmStripOnly: false,
-            },
-            jwt: 'YOUR_GENERATED_JWT', // If required for your service
+            }
         };
 
         const api = new JitsiMeetExternalAPI(domain, options);
