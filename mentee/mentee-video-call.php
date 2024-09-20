@@ -1,7 +1,6 @@
 <?php include('header.php');
 // call.php
 session_start();
-$_SESSION['user_id']=1;
 $mentee_id = $_SESSION['user_id']; // Get mentee ID from session
 $mentor_id = $_GET['mentorId']; // Assume mentor ID is passed via GET
 error_reporting(0);
@@ -38,7 +37,7 @@ if ($existing_call) {
 
 
 ?>
-<script src='https://8x8.vc/vpaas-magic-cookie-c4604cec7a16490fbea68e04eefd77b4/external_api.js' async></script>
+
 <script type="text/javascript">
     window.onload = () => {
     const api = new JitsiMeetExternalAPI("8x8.vc", {

@@ -3,14 +3,14 @@
     
     <?php
     session_start();
-    $mentee_id = $_SESSION['user_id']; // Get mentee ID from session
+    $mentor_id = $_SESSION['user_id']; // Get mentee ID from session
 
     // Database connection
     $conn = new PDO('mysql:host=localhost;dbname=veloraa_db', 'root', ''); // Update with your credentials
 
     // Check for existing calls for the mentee
-    $stmt = $conn->prepare("SELECT room_id, mentor_id, created_at FROM calls_tbl WHERE mentee_id = ?");
-    $stmt->execute([$mentee_id]);
+    $stmt = $conn->prepare("SELECT room_id, mentor_id, created_at FROM calls_tbl WHERE mentor_id = ?");
+    $stmt->execute([$mentor_id]);
     $existing_calls = $stmt->fetchAll();
 
     if ($existing_calls) {

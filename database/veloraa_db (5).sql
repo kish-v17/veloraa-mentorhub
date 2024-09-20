@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 20, 2024 at 06:07 AM
+-- Generation Time: Sep 20, 2024 at 06:24 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -40,11 +40,7 @@ CREATE TABLE `calls_tbl` (
 --
 
 INSERT INTO `calls_tbl` (`id`, `mentee_id`, `mentor_id`, `room_id`, `created_at`) VALUES
-(1, 1, 1, 'Room-cda66a3d65a86182', '2024-09-20 05:13:36'),
-(2, 1, 1, 'Room-8c1fab657dac68a5', '2024-09-20 05:14:47'),
-(3, 1, 1, 'Room-bd99f654808388fa', '2024-09-20 05:16:25'),
-(4, 1, 2, 'Room-beeccfa66e692cd5', '2024-09-20 05:22:35'),
-(5, 1, 3, 'Room-c56f528f0a2d7640', '2024-09-20 05:51:46');
+(1, 4, 3, 'Room-32a91e28032d8abe', '2024-09-20 06:18:46');
 
 -- --------------------------------------------------------
 
@@ -120,7 +116,7 @@ ALTER TABLE `user_tbl`
 -- AUTO_INCREMENT for table `calls_tbl`
 --
 ALTER TABLE `calls_tbl`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user_tbl`

@@ -304,7 +304,7 @@
     function displayMentors($dbh) {
     
         // Prepare and execute the SQL statement
-        $stmt = $dbh->prepare("SELECT * FROM user_tbl");
+        $stmt = $dbh->prepare("SELECT * FROM user_tbl where U_Role=2");
         $stmt->execute();
     
         // Fetch all mentors
