@@ -1,15 +1,11 @@
-<div class="dropdown-menu dropdown-menu-end p-4 rounded-3 border-0 shadow-lg" aria-labelledby="dropdownMenu3">
-    <h4 class="fw-700 font-xss mb-4">Notification</h4>
-    
+<div class="dropdown-menu dropdown-menu-end p-4 rounded-3 border-0 shadow-lg" aria-labelledby="dropdownMenu3">    <h4 class="fw-700 font-xss mb-4">Notification</h4>
     <?php
     session_start();
+    require('../database/db.php');
     $mentor_id = $_SESSION['user_id']; // Get mentee ID from session
-
-    // Database connection
-    $conn = new PDO('mysql:host=localhost;dbname=veloraa_db', 'root', ''); // Update with your credentials
-
+    
     // Check for existing calls for the mentee
-    $stmt = $conn->prepare("SELECT room_id, mentor_id, created_at FROM calls_tbl WHERE mentor_id = ?");
+    $stmt = $dbh->prepare(query: "SELECT room_id, mentor_id, created_at FROM calls_tbl WHERE mentor_id = ?");
     $stmt->execute([$mentor_id]);
     $existing_calls = $stmt->fetchAll();
 

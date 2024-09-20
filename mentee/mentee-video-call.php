@@ -1,6 +1,6 @@
 <?php include('header.php');
 // call.php
-session_start();
+// session_start();
 $mentee_id = $_SESSION['user_id']; // Get mentee ID from session
 $mentor_id = $_GET['mentorId']; // Assume mentor ID is passed via GET
 error_reporting(0);
@@ -55,7 +55,7 @@ if ($existing_call) {
             <div class="middle-sidebar-bottom">
                 <div class="middle-sidebar-left pe-0 ms-0 me-0" style="max-width: 100%;">
                     <div class="row">
-                        <div class="col-xl-8 col-xxl-9 col-lg-8">
+                        <div class="col">
                             <div class="card border-0 mb-0 rounded-3 overflow-hidden chat-wrapper bg-image-center bg-image-cover" id="jaas-container" style="background-image: url(images/video-bg-1.jpg);">
                                 <!-- <div class="card-body position-absolute mt-0 ms-0 left-0">
                                     
@@ -72,7 +72,7 @@ if ($existing_call) {
                                 </div> -->
                             </div>
                         </div>              
-                        <div class="col-xl-4 col-xxl-3 col-lg-4 pe-0 ps-0">
+                        <!-- <div class="col-xl-4 col-xxl-3 col-lg-4 pe-0 ps-0">
                             <div class="card w-100 d-block chat-body p-0 border-0 shadow-xss rounded-3 mb-3 position-relative">
                                 <div class="messages-content chat-wrapper scroll-bar p-3">
                                     <div class="message-item">
@@ -173,7 +173,7 @@ if ($existing_call) {
                                     <button class="bg-current"><i class="ti-arrow-right text-white"></i></button>
                                 </form>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                  
